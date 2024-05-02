@@ -27,7 +27,7 @@
         <a href="#" class=""><i
                 class="mr-2 bi bi-easel2 pc"></i> App slides</a>
         <a href="#" class=""><i
-                class="mr-2 bi bi-easel3 pc"></i> App banner</a>
+                class="mr-2 bi bi-segmented-nav pc"></i> App banner</a>
     </div>
     <div class="main-dashboard-view">
         <div class="header space-between pbc">
