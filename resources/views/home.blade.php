@@ -16,6 +16,8 @@
                 class="mr-2 bi bi-file-earmark-text pc"></i> Service categories</a>
         <a href="#" onclick="getView({'url':'{{route('customers.index')}}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-people pc"></i> Customers</a>
+        <a href="#"><i
+                class="mr-2 bi bi-truck pc"></i> Courier</a>
 
         <div class="nav-sect">ADMINISTRATION</div>
         <a href="#" class=""><i
