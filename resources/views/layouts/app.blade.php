@@ -9,7 +9,7 @@
 
     <title>Computer Guardian</title>
 
-    <link rel="icon" href="{{asset('logos/favicon-16x16.png')}}">
+    <link rel="icon" href="{{asset('logos/logo.png')}}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
