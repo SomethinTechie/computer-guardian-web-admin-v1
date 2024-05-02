@@ -5,7 +5,7 @@
 <div class="col-md-12 std-padding-x">
     <div class="message" style="background: #eee;border-radius: 6px;border: solid .1px #ddd;padding: 10px 10px 10px 18px">
         <div class="right">
-            Found  <strong style="padding: 0 5px"> 0 </strong> branches
+            Found  <strong style="padding: 0 5px"> {{$total}} </strong> branches
         </div>
         <div class="left">
             <a href="#" onclick="openModal({'url':'{{route('quote.create')}}','modalId':'ajaxModal','method':'GET'})" class="std-btn-sm default">Add branch</a>

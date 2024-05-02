@@ -18,9 +18,9 @@
                 class="mr-2 bi bi-people pc"></i> Customers</a>
 
         <div class="nav-sect">ADMINISTRATION</div>
-        <a href="#" onclick="getView({'url':'','view':'ajax-view'})" class=""><i
+        <a href="#" class=""><i
                 class="mr-2 bi bi-person-gear pc"></i> Users</a>
-        <a href="#" onclick="getView({'url':'','view':'ajax-view'})" class=""><i
+        <a href="#" class=""><i
                 class="mr-2 bi bi-headset pc"></i> Support</a>
     </div>
     <div class="main-dashboard-view">
