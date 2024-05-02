@@ -22,6 +22,12 @@
                 class="mr-2 bi bi-person-gear pc"></i> Users</a>
         <a href="#" class=""><i
                 class="mr-2 bi bi-headset pc"></i> Support</a>
+
+        <div class="nav-sect">EXTRAS</div>
+        <a href="#" class=""><i
+                class="mr-2 bi bi-easel2 pc"></i> App slides</a>
+        <a href="#" class=""><i
+                class="mr-2 bi bi-easel3 pc"></i> App banner</a>
     </div>
     <div class="main-dashboard-view">
         <div class="header space-between pbc">
