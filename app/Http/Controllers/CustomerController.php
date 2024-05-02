@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
-use App\Models\Customer;
+use App\Models\User;
 
 class CustomerController extends Controller
 {
@@ -15,9 +15,9 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::orderBy('created_at', 'desc')->paginate(10);
+        $customers = User::orderBy('created_at', 'desc')->paginate(10);
 
-        $total = Customer::all()->count();
+        $total = User::all()->count();
         return response()->view('customers.index', compact('customers', 'total'));
     }
 

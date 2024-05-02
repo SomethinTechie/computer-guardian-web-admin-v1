@@ -15,7 +15,7 @@ class BranchController extends Controller
      */
     public function index()
     {
-        //
+        return response()->view('branches.index');
     }
 
     /**

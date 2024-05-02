@@ -6,14 +6,16 @@
             <strong>Computer Guardian</strong>
         </div>
         <div class="nav-sect">PRIMARY</div>
-        <a href="#" onclick="getView({'url':'{{ route('home') }}','view':'ajax-view'})" class="active"><i
+        <a href="#" onclick="getView({'url':'{{ route('overview') }}','view':'ajax-view'})" class="active"><i
                 class="mr-2 bi bi-house pc"></i> Overview</a>
-        <a href="#" onclick="getView({'url':'','view':'ajax-view'})"><i
-                class="mr-2 bi bi-layers pc"></i> Parcels</a>
-        <a href="#" onclick="getView({'url':'','view':'ajax-view'})"><i
+        <a href="#" onclick="getView({'url':'{{route('quote.index')}}','view':'ajax-view'})"><i
+                class="mr-2 bi bi-layers pc"></i> Quotations</a>
+        <a href="#" onclick="getView({'url':'{{route('branch.index')}}','view':'ajax-view'})"><i
+                class="mr-2 bi bi-bank pc"></i> Branches</a>
+        <a href="#" onclick="getView({'url':'/admin/services','view':'ajax-view'})"><i
+                class="mr-2 bi bi-file-earmark-text pc"></i> Service categories</a>
+        <a href="#" onclick="getView({'url':'{{route('customers.index')}}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-people pc"></i> Customers</a>
-        <a href="#" onclick="getView({'url':'','view':'ajax-view'})"><i
-                class="mr-2 bi bi-file-earmark-text pc"></i> Quotations</a>
 
         <div class="nav-sect">ADMINISTRATION</div>
         <a href="#" onclick="getView({'url':'','view':'ajax-view'})" class=""><i

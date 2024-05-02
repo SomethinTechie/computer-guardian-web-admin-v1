@@ -22,6 +22,11 @@ class ServiceController extends Controller
 
     }
 
+    public function adminIndex() {
+        $services = Service::all();
+        return response()->view('services.index', compact('services'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
