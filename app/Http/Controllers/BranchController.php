@@ -15,7 +15,9 @@ class BranchController extends Controller
      */
     public function index()
     {
-        return response()->view('branches.index');
+        $branches = Branch::all();
+        $total = Branch::count();
+        return response()->view('branches.index', compact('branches', 'total'));
     }
 
     /**

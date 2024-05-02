@@ -13,36 +13,37 @@
     </div>
 
     <div class="scrollview mt-3">
-        <table>
-            <th>Parcel ID</th>
-            <th>Parcel Name</th>
-            <th>Parcel Description</th>
-            <th>Parcel Status</th>
-            <th style="text-align: right">Actions</th>
+        @if (count($services) > 0)
+            <table>
+                <th>Parcel ID</th>
+                <th>Parcel Name</th>
+                <th>Parcel Description</th>
+                <th>Parcel Status</th>
+                <th style="text-align: right">Actions</th>
 
-            <tr>
-                <td><input type="checkbox" style="float: left;width: 20px!important;margin: 5px 10px 0 0"> #89439</td>
-                <td>Laptop</td>
-                <td>Black 2023 i5 dell laptop. </td>
-                <td>Received</td>
-                <td>
-                    <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})" class="std-btn-sm default">View</a>
-                    <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})" class="std-btn-sm default">Edit</a>
-                    <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'DELETE'})" class="std-btn-sm default">Delete</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td><input type="checkbox" style="float: left;width: 20px!important;margin: 5px 10px 0 0"> #46823</>
-                <td>Mobile phone</td>
-                <td>Titatium black 2024 Iphone 15 224 GB</td>
-                <td>Collected</td>
-                <td>
-                    <a href="#" onclick="openModal({'url':'###modalId':'ajaxModal','method':'GET'})" class="std-btn-sm default">View</a>
-                    <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})" class="std-btn-sm default">Edit</a>
-                    <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'DELETE'})" class="std-btn-sm default">Delete</a>
-                </td>
-            </tr>
-        </table>
+                @foreach ($services as $service)
+                    <tr>
+                        <td><input type="checkbox" style="float: left;width: 20px!important;margin: 5px 10px 0 0">
+                            #89439
+                        </td>
+                        <td>Laptop</td>
+                        <td>Black 2023 i5 dell laptop. </td>
+                        <td>Received</td>
+                        <td>
+                            <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})"
+                                class="std-btn-sm default">View</a>
+                            <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})"
+                                class="std-btn-sm default">Edit</a>
+                            <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'DELETE'})"
+                                class="std-btn-sm default">Delete</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+        @else
+            <div class="message">
+                <p>No services added yet</p>
+            </div>
+        @endif
     </div>
 </div>
