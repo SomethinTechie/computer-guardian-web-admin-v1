@@ -6,19 +6,19 @@
             <strong>Computer Guardian</strong>
         </div>
         <div class="nav-sect">PRIMARY</div>
-        <a href="#" onclick="getView({'url':'{{ route('dashboard') }}','view':'ajax-view'})" class="active"><i
+        <a href="#" onclick="getView({'url':'{{ route('home') }}','view':'ajax-view'})" class="active"><i
                 class="mr-2 bi bi-house pc"></i> Overview</a>
-        <a href="#" onclick="getView({'url':'{{ route('parcels.index') }}','view':'ajax-view'})"><i
+        <a href="#" onclick="getView({'url':'','view':'ajax-view'})"><i
                 class="mr-2 bi bi-layers pc"></i> Parcels</a>
-        <a href="#" onclick="getView({'url':'{{ route('customers.index') }}','view':'ajax-view'})"><i
+        <a href="#" onclick="getView({'url':'','view':'ajax-view'})"><i
                 class="mr-2 bi bi-people pc"></i> Customers</a>
-        <a href="#" onclick="getView({'url':'{{ route('quotes.index') }}','view':'ajax-view'})"><i
+        <a href="#" onclick="getView({'url':'','view':'ajax-view'})"><i
                 class="mr-2 bi bi-file-earmark-text pc"></i> Quotations</a>
 
         <div class="nav-sect">ADMINISTRATION</div>
-        <a href="#" onclick="getView({'url':'{{route('support.index')}}','view':'ajax-view'})" class=""><i
+        <a href="#" onclick="getView({'url':'','view':'ajax-view'})" class=""><i
                 class="mr-2 bi bi-person-gear pc"></i> Users</a>
-        <a href="#" onclick="getView({'url':'{{route('support.index')}}','view':'ajax-view'})" class=""><i
+        <a href="#" onclick="getView({'url':'','view':'ajax-view'})" class=""><i
                 class="mr-2 bi bi-headset pc"></i> Support</a>
     </div>
     <div class="main-dashboard-view">
