@@ -15,7 +15,7 @@ class BranchController extends Controller
      */
     public function index()
     {
-        $branches = Branch::all();
+        $branches = Branch::orderBy('created_at', 'desc')->get();
         $total = Branch::count();
         return response()->view('branches.index', compact('branches', 'total'));
     }

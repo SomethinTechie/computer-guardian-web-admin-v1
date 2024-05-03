@@ -9,7 +9,7 @@
                         placeholder="Enter branch name...">
                 </div>
                 <div class="error" data-name="name"></div>
-                
+
                 <label for="name">Address</label>
                 <div class="input-group">
                     <input type="text" name="address" id="name" class="form-control"
@@ -36,21 +36,24 @@
                 <div class="btns mt-3">
                     <a href="#" class="std-btn"
                         onclick="submitForm({'url':'{{ route('branch.store') }}','formId':'branchForm','method':'POST','modalSect':'add_branch_form_sect','resView':'ajaxView'})">Save</a>
-                    <a href="#" onclick="getView({'url':'{{route('branch.index')}}','view':'ajax-view'})">Cancel</a>
+                    <a href="#" class="std-btn"
+                        onclick="closeModal({'modalId':'ajaxModal'})">Cancel</a>
                 </div>
             </div>
         </div>
         <div id="add_branch_form_sect" class="formSect">
+
+            <h2 class="mb-3 text-center">Add new branch</h2>
+            <p style="text-align: center">
+                Branch added successfully
+            </p>
             <div class="btns mt-3">
-                <h2 class="mb-3">Add new branch</h2>
-                <p style="text-align: center">
-                    Branch added successfully
-                </p>
                 <a href="#" class="std-btn"
-                    onclick="openModal({'url':'{{route('branch.create')}}','modalId':'ajaxModal','method':'GET'})">Add
+                    onclick="openModal({'url':'{{ route('branch.create') }}','modalId':'ajaxModal','method':'GET'})">Add
                     more</a>
                 <a href="#" class="std-btn" onclick="closeModal({'modalId':'ajaxModal'})">Done</a>
             </div>
+
         </div>
     </form>
 </div>
