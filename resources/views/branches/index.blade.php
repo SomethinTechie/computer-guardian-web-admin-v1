@@ -15,20 +15,20 @@
     <div class="scrollview mt-3">
         @if (count($branches) > 0)
             <table>
-                <th>Parcel ID</th>
-                <th>Parcel Name</th>
-                <th>Parcel Description</th>
-                <th>Parcel Status</th>
+                <th>Branch name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Email</th>
                 <th style="text-align: right">Actions</th>
 
                 @foreach ($branches as $branch)
                     <tr>
-                        <td><input type="checkbox" style="float: left;width: 20px!important;margin: 5px 10px 0 0">
-                            #89439
+                        <td>
+                            {{$branch->name}}
                         </td>
-                        <td>Laptop</td>
-                        <td>Black 2023 i5 dell laptop. </td>
-                        <td>Received</td>
+                        <td>{{$branch->address}}</td>
+                        <td>{{$branch->phone}}</td>
+                        <td>{{$branch->email}}</td>
                         <td>
                             <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})"
                                 class="std-btn-sm default">View</a>
