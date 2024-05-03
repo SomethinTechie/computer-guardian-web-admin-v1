@@ -49,9 +49,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/services', [ServiceController::class, 'adminIndex'])->name('services.index');
     Route::get('/quote/request/form/data', [QuoteController::class, 'formData'])->name('quote.request.form.data');
 
-//services routes
+//services
     Route::get('/services', [ServiceController::class, 'index']);
-    Route::post('/service/create', [ServiceController::class, 'store'])->name('service.create');
+    Route::get('/service/create', [ServiceController::class, 'create'])->name('service.create');
     Route::get('/service/{service}', [ServiceController::class, 'show'])->name('service.show');
     Route::post('/service/{service}/update', [ServiceController::class, 'update'])->name('service.update');
     Route::post('/service/{service}/delete', [ServiceController::class, 'destroy'])->name('service.delete');

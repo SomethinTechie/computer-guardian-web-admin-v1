@@ -8,7 +8,7 @@
             Found  <strong style="padding: 0 5px"> {{$total}} </strong> services
         </div>
         <div class="left">
-            <a href="#" onclick="openModal({'url':'{{route('quote.create')}}','modalId':'ajaxModal','method':'GET'})" class="std-btn-sm default">Add service</a>
+            <a href="#" onclick="openModal({'url':'{{route('service.create')}}','modalId':'ajaxModal','method':'GET'})" class="std-btn-sm default">Add service</a>
         </div>
     </div>
 

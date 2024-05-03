@@ -26,7 +26,7 @@ class ServiceController extends Controller
         $services = Service::with('quote_requests')->get();
 
         $total = Service::count();
-        
+
         return response()->view('services.index', compact('services', 'total'));
     }
 
@@ -37,7 +37,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return response()->view('services.create');
     }
 
     /**
