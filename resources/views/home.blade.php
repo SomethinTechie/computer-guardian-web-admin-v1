@@ -100,7 +100,7 @@
 
         <!-- Dynamic modal view -->
         <div id="updateModal" class="body animated fadeInUp"></div>
-        <div id="ajaxModal" class="body animated fadeInUp"></div>
+        <div id="ajaxModal" class="animated fadeInUp"></div>
 
     </div>
     <div id="search-loading" class="search-loading">

@@ -17,22 +17,23 @@
     <div class="scrollview mt-3">
         @if (count($quotes) > 0)
             <table>
-                <th>Parcel ID</th>
-                <th>Parcel Name</th>
-                <th>Parcel Description</th>
-                <th>Parcel Status</th>
+                <th>Quote ID</th>
+                <th>Customer Name</th>
+                <th>Parcel name</th>
+                <th>Service</th>
                 <th style="text-align: right">Actions</th>
 
                 @foreach ($quotes as $quote)
                     <tr>
-                        <td><input type="checkbox" style="float: left;width: 20px!important;margin: 5px 10px 0 0">
+                        <td>
+                            <input type="checkbox" style="float: left;width: 20px!important;margin: 5px 10px 0 0">
                             #89439
                         </td>
-                        <td>Laptop</td>
-                        <td>Black 2023 i5 dell laptop. </td>
-                        <td>Received</td>
+                        <td>{{$quote->user->name}}</td>
+                        <td>{{$quote->make}}</td>
+                        <td>{{$quote->service->name}}</td>
                         <td>
-                            <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})"
+                            <a href="#" onclick="openModal({'url':'{{route('quote.show',[$quote->id])}}','modalId':'ajaxModal','method':'GET'})"
                                 class="std-btn-sm default">View</a>
                             <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})"
                                 class="std-btn-sm default">Edit</a>

@@ -10,7 +10,6 @@ use App\Models\Quote;
 use App\Models\QuoteRequest;
 use App\Models\Service;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class QuoteController extends Controller
 {
@@ -30,10 +29,13 @@ class QuoteController extends Controller
         ], 200);
     }
 
-    public function adminIndex() {
+    public function adminIndex()
+    {
 
-        $quotes = QuoteRequest::orderBy('created_at', 'desc')->get();
-        Log::info($quotes);
+        $quotes = QuoteRequest::orderBy('created_at', 'desc')
+            ->with('user', 'service')
+            ->get();
+
         $total = Quote::count();
 
         return response()->view('quotations.index', compact('quotes', 'total'));
@@ -105,6 +107,13 @@ class QuoteController extends Controller
         return response()->json([
             'quote' => $quote,
         ], 200);
+    }
+
+
+    public function adminShow(Request $request)
+    {
+        $quote = QuoteRequest::find($request->route('quote'));
+        return response()->view('quotations.show', compact('quote'));
     }
 
     /**

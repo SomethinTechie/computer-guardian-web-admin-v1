@@ -795,3 +795,39 @@ td span {
 .no-borders {
     border: none !important;
 }
+.listItem {
+    padding: 10px 0;
+    border-bottom: dotted 0.1px #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.listItem span {
+    display: block;
+    width: 170px;
+}
+.listItem:last-child {
+    border-bottom: none;
+}
+.btns {
+    padding: 0;
+    border: solid .1px #ddd;
+    border-radius: 5px;
+}
+.btns .std-btn {
+    padding: 20px 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    background-color: #eee;
+    margin: 0;
+    color: #000;
+}
+.btns .std-btn:first-child {
+    border-radius: 5px 0 0 5px;
+}
+.btns .std-btn:last-child {
+    border-radius: 0 5px 5px 0;
+}

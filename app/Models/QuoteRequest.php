@@ -26,4 +26,14 @@ class QuoteRequest extends Model
         'pickup_date',
         'pickup_time',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }

@@ -80,4 +80,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Repair::class);
     }
+
+    public function quote()
+    {
+        return $this->hasMany(Quote::class);
+    }
+
+    public function quote_request()
+    {
+        return $this->hasMany(QuoteRequest::class);
+    }
 }
