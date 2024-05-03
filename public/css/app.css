@@ -805,6 +805,7 @@ td span {
 .listItem span {
     display: block;
     width: 170px;
+    text-align: left;
 }
 .listItem:last-child {
     border-bottom: none;
