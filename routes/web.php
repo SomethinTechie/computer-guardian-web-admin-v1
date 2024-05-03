@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ParcelController;
 use App\Http\Controllers\QuoteController;
@@ -9,8 +11,6 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
 //branches
     Route::get('/branches', [BranchController::class, 'index'])->name('branch.index');
     Route::get('/branch/create', [BranchController::class, 'create'])->name('branch.create');
+    Route::post('/branch/store', [BranchController::class, 'store'])->name('branch.store');
     Route::get('/branch/{branch}', [BranchController::class, 'show'])->name('branch.show');
     Route::post('/branch/{branch}/update', [BranchController::class, 'update'])->name('branch.update');
     Route::post('/branch/{branch}/delete', [BranchController::class, 'destroy'])->name('branch.delete');

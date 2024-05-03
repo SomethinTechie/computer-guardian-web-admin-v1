@@ -639,7 +639,7 @@ p span {
 .error {
     color: #cc0000;
     font-size: 12px;
-    padding: 2px 5px;
+    padding: 2px 0;
     opacity: 0.6;
 }
 input.error {
@@ -831,4 +831,10 @@ td span {
 }
 .btns .std-btn:last-child {
     border-radius: 0 5px 5px 0;
+}
+.formSect {
+    display: none;
+}
+.formSect.active {
+    display: block;
 }

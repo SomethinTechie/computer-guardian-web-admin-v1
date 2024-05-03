@@ -38,7 +38,8 @@ class BranchController extends Controller
      */
     public function store(StoreBranchRequest $request)
     {
-        //
+        $branch = Branch::create($request->validated());
+        return response()->json($branch, 201);
     }
 
     /**

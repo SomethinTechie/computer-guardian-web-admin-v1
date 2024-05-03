@@ -222,6 +222,7 @@ function submitForm(req) {
                 errors[e].innerHTML = ''
             }
             var pageErrors = data.responseJSON;
+            console.log(data)
             var errorsHtml = '';
             $.each(pageErrors.errors, function (key, value) {
                 for (var j = 0; j < errors.length; j++) {
