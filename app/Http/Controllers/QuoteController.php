@@ -36,7 +36,7 @@ class QuoteController extends Controller
             ->with('user', 'service')
             ->get();
 
-        $total = Quote::count();
+        $total = QuoteRequest::count();
 
         return response()->view('quotations.index', compact('quotes', 'total'));
     }
