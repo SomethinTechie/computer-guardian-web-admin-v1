@@ -23,8 +23,10 @@ class ServiceController extends Controller
     }
 
     public function adminIndex() {
-        $services = Service::all();
+        $services = Service::with('quote_requests')->get();
+
         $total = Service::count();
+        
         return response()->view('services.index', compact('services', 'total'));
     }
 

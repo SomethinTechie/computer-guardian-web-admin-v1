@@ -15,20 +15,18 @@
     <div class="scrollview mt-3">
         @if (count($services) > 0)
             <table>
-                <th>Parcel ID</th>
-                <th>Parcel Name</th>
-                <th>Parcel Description</th>
-                <th>Parcel Status</th>
+                <th>Service name</th>
+                <th>status</th>
+                <th>Quotes</th>
                 <th style="text-align: right">Actions</th>
 
                 @foreach ($services as $service)
                     <tr>
-                        <td><input type="checkbox" style="float: left;width: 20px!important;margin: 5px 10px 0 0">
-                            #89439
+                        <td>
+                            {{$service->name}}
                         </td>
-                        <td>Laptop</td>
-                        <td>Black 2023 i5 dell laptop. </td>
-                        <td>Received</td>
+                        <td>{{$service->status}}</td>
+                        <td>{{$service->quote_requests->count()}}</td>
                         <td>
                             <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})"
                                 class="std-btn-sm default">View</a>
