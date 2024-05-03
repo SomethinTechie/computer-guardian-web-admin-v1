@@ -23,7 +23,9 @@ class ServiceController extends Controller
     }
 
     public function adminIndex() {
-        $services = Service::with('quote_requests')->get();
+        $services = Service::with('quote_requests')
+        ->orderBy('created_at', 'desc')
+        ->get();
 
         $total = Service::count();
 
