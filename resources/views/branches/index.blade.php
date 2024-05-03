@@ -8,7 +8,7 @@
             Found  <strong style="padding: 0 5px"> {{$total}} </strong> branches
         </div>
         <div class="left">
-            <a href="#" onclick="openModal({'url':'{{route('quote.create')}}','modalId':'ajaxModal','method':'GET'})" class="std-btn-sm default">Add branch</a>
+            <a href="#" onclick="openModal({'url':'{{route('branch.create')}}','modalId':'ajaxModal','method':'GET'})" class="std-btn-sm default">Add branch</a>
         </div>
     </div>
 
@@ -30,8 +30,6 @@
                         <td>{{$branch->phone}}</td>
                         <td>{{$branch->email}}</td>
                         <td>
-                            <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})"
-                                class="std-btn-sm default">View</a>
                             <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})"
                                 class="std-btn-sm default">Edit</a>
                             <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'DELETE'})"
