@@ -43,7 +43,7 @@
         </div>
         <div id="add_branch_form_sect" class="formSect">
 
-            <h2 class="mb-3 text-center">Add new branch</h2>
+            <h2 class="mb-3 text-center">Success</h2>
             <p style="text-align: center">
                 Branch added successfully
             </p>
