@@ -1,4 +1,4 @@
-<div class="" style="width: 500px;background: #f7f7f7;padding: 30px;border-radius: 4px">
+<div class="" style="width: 100%;background: #f7f7f7;padding: 30px;border-radius: 4px">
     <h3>Quote request</h3><br>
     <p class="listItem"><span>Status:</span> {{$quote->status}}</p>
     <p class="listItem"><span>Device:</span> {{$quote->device}}</p>

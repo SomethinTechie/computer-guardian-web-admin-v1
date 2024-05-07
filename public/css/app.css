@@ -800,10 +800,10 @@ td span {
 }
 .listItem {
     padding: 10px 0;
-    border-bottom: dotted 0.1px #eee;
+    border-bottom: dotted 1px #ddd;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: left;
 }
 .listItem span {
     display: block;
