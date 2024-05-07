@@ -11,6 +11,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CourierController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -101,5 +102,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/customer/{customer}', [CustomerController::class, 'show'])->name('customer.show');
     Route::post('/customer/{customer}/update', [CustomerController::class, 'update'])->name('customer.update');
     Route::post('/customer/{customer}/delete', [CustomerController::class, 'destroy'])->name('customer.delete');
+
+    //Courier
+    Route::get('/courier', [CourierController::class, 'index'])->name('courier.index');
+    Route::get('/courier/create', [CourierController::class, 'create'])->name('courier.create');
+    Route::post('/courier/store', [CourierController::class, 'store'])->name('courier.store');
+    Route::get('/courier/{courier}', [CourierController::class, 'show'])->name('courier.show');
+    Route::post('/courier/{courier}/update', [CourierController::class, 'update'])->name('courier.update');
+    Route::post('/courier/{courier}/delete', [CourierController::class, 'destroy'])->name('courier.delete');
 
 });

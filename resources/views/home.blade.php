@@ -14,9 +14,9 @@
                 class="mr-2 bi bi-bank pc"></i> Branches</a>
         <a href="#" onclick="getView({'url':'/admin/services','view':'ajax-view'})"><i
                 class="mr-2 bi bi-file-earmark-text pc"></i> Service categories</a>
-        <a href="#" onclick="getView({'url':'{{route('customers.index')}}','view':'ajax-view'})"><i
+        <a href="#" onclick="getView({'url':'{{route('courier.index')}}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-people pc"></i> Customers</a>
-        <a href="#"><i
+        <a href="#" onclick="getView({'url':'{{route('courier.index')}}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-truck pc"></i> Courier</a>
 
         <div class="nav-sect">ADMINISTRATION</div>

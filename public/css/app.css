@@ -841,3 +841,8 @@ td span {
 .formSect.active {
     display: block;
 }
+.inline-input {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+}
