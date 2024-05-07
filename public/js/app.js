@@ -29,6 +29,10 @@ function getView(req) {
         req.url = url
     }
 
+    if (req.modalId) {
+        closeModal({ 'modalId': req.modalId })
+    }
+
     $.ajax({
         url: req.url,
         type: 'GET',

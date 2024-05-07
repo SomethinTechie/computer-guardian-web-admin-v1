@@ -51,7 +51,7 @@
                 <a href="#" class="std-btn"
                     onclick="openModal({'url':'{{ route('branch.create') }}','modalId':'ajaxModal','method':'GET'})">Add
                     more</a>
-                <a href="#" class="std-btn" onclick="closeModal({'modalId':'ajaxModal'})">Done</a>
+                <a href="#" class="std-btn" onclick="getView({'url':'{{route('branch.index')}}','view':'ajax-view','modalId':'ajaxModal'})">Done</a>
             </div>
 
         </div>

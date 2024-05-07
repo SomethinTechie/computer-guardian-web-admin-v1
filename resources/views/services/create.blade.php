@@ -28,7 +28,7 @@
                 <a href="#" class="std-btn"
                     onclick="openModal({'url':'{{ route('service.create') }}','modalId':'ajaxModal','method':'GET'})">Add
                     more</a>
-                <a href="#" class="std-btn" onclick="closeModal({'modalId':'ajaxModal'})">Done</a>
+                <a href="#" class="std-btn"  onclick="getView({'url':'/admin/services','view':'ajax-view','modalId':'ajaxModal'})">Done</a>
             </div>
         </div>
     </form>
