@@ -91,7 +91,7 @@
                 </div>
             </div>
             <div class="col-md-12" style="height: 100px!important;">
-                <div class="header">RECENT ACTIVITY</div>
+                <div class="header" style="font-size: 14px">RECENT ACTIVITY</div>
             </div>
         </div>
     </div>

@@ -132,6 +132,7 @@ html {
     padding: 0 25px;
     text-decoration: none;
     position: relative;
+    font-size: 14px;
 }
 .side-navigation a:hover {
     color: #1c1342;
@@ -486,6 +487,7 @@ p span {
     border-left: solid 0.1px #eee;
     display: flex;
     align-items: center;
+    font-size: 14px;
 }
 .overview-card-insight i {
     color: val(--primary) !important;
@@ -706,6 +708,7 @@ th {
 table tr td {
     padding: 15px 20px;
     cursor: pointer;
+    font-size: 14px;
 }
 tr {
     padding: 15px 20px;
