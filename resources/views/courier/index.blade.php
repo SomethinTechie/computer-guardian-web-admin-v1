@@ -56,7 +56,7 @@
                         <td>{{ date('F d, Y h:i A', strtotime($shipment['time_created'])) }}</td>
                         <td>
                             <a href="#" onclick="getView({'url':'{{route('courier.create')}}','view':'ajax-view'})"
-                                class="std-btn-sm default">Book collection</a>
+                                class="std-btn-sm default">Cancel</a>
                         </td>
                     </tr>
                 @endforeach
