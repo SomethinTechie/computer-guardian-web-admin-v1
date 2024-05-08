@@ -15,12 +15,11 @@
         </p>
 
 
-        <p class="mt-4" style="font-size: 10px;opacity: .7;">COLLECTION ADDRESS</p>
+        <p class="mt-4" style="font-size: 10px;opacity: .7;">COLLECTION ADDRESS & CONTACT PERSON</p>
         <p class="listItem">
             <span style="opacity: 1">Street address:</span>
             <input class="inline-input" type="text" placeholder="Enter street address..." name="street_address">
         </p>
-        <p class="mt-4" style="font-size: 10px;opacity: .7;">COLLECTION CONTACT</p>
         <p class="listItem">
             <span style="opacity: 1">Name:</span>
             <input class="inline-input" type="text" placeholder="Enter contact name..." name="name">
@@ -34,14 +33,11 @@
             <input class="inline-input" type="text" placeholder="Enter email..." name="email">
         </p>
 
-        <hr>
-
-        <p class="mt-4" style="font-size: 10px;opacity: .7;">DELIVERY ADDRESS</p>
+        <p class="mt-4" style="font-size: 10px;opacity: .7;">DELIVERY ADDRESS & CONTACT PERSON</p>
         <p class="listItem">
             <span style="opacity: 1">Street address:</span>
             <input class="inline-input" type="text" placeholder="Enter street address..." name="street_address">
         </p>
-        <p class="mt-4" style="font-size: 10px;opacity: .7;">DELIVERY CONTACT</p>
         <p class="listItem">
             <span style="opacity: 1">Name:</span>
             <input class="inline-input" type="text" placeholder="Enter contact name..." name="name">
@@ -50,7 +46,7 @@
             <span style="opacity: 1">Mobile number:</span>
             <input class="inline-input" type="text" placeholder="Enter mobile number..." name="mobile_number">
         </p>
-        <p class="listItem">
+        <p class="listItem" style="border-bottom: none">
             <span style="opacity: 1">Email:</span>
             <input class="inline-input" type="text" placeholder="Enter email..." name="email">
         </p>

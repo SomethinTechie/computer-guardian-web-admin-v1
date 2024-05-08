@@ -21,6 +21,7 @@
                 <th>Customer Name</th>
                 <th>Parcel name</th>
                 <th>Service</th>
+                <th>Status</th>
                 <th style="text-align: right">Actions</th>
 
                 @foreach ($quotes as $quote)
@@ -32,6 +33,7 @@
                         <td>{{$quote->user->name}}</td>
                         <td>{{$quote->make}}</td>
                         <td>{{$quote->service->name}}</td>
+                        <td>{{$quote->status}}</td>
                         <td>
                             <a href="#" onclick="getView({'url':'{{route('quote.show',[$quote->id])}}','view':'ajax-view'})"
                                 class="std-btn-sm default">View</a>

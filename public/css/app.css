@@ -408,6 +408,9 @@ h6 {
     background-color: #fff;
     border-radius: 10px 10px 0 0;
 }
+.bb1 {
+    border-bottom: solid 0.1px #ddd;
+}
 .modal-sect {
     display: none;
 }

@@ -100,6 +100,14 @@
 
         <!-- Dynamic modal view -->
         <div id="updateModal" class="body animated fadeInUp"></div>
+        <div id="approveQuote" class="body animated fadeInUp" style="width: 300px">
+            <div class="modal-header bb1">confirm approval</div>
+            <p>Are you sure you want to approve this quote, if yes click continue.</p>
+            <div class="btns" style="margin: 20px">
+                <a href="#" class="std-btn" onclick="closeModal({'modalId':'approveQuote'})">Cancel</a>
+                <a href="#" class="std-btn" onclick="closeModal({'modalId':'approveQuote'})">Continue</a>
+            </div>
+        </div>
         <div id="ajaxModal" class="body animated fadeInUp"></div>
 
     </div>

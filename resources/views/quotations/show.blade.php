@@ -13,8 +13,8 @@
     <p class="listItem"><span>Pickup:</span> {{$quote->pickup}}</p>
     <p class="listItem"><span>Pickup date:</span> {{$quote->pickup_date}}</p>
     <p class="listItem" style="border-bottom: none"><span>Requested date:</span> {{$quote->created_at}}</p>
-    <div class="btns mt-3">
-        <a href="#" class="std-btn">Approve</a>
-        <a href="#" class="std-btn" onclick="closeModal({'modalId':'ajaxModal'})">Cancel</a>
+    <div class="btns mt-3 col-md-3">
+        <a href="#" class="std-btn" onclick="getView({'url':'{{route('quote.index')}}','view':'ajax-view'})">Back</a>
+        <a href="#" class="std-btn" onclick="openModal({'modalId':'approveQuote'})">Approve</a>
     </div>
 </div>
