@@ -8,9 +8,12 @@
             Found {{ $total }}  approved quatations
         </div>
         <div class="left">
-            {{-- <a href="#"
+            <a href="#"
                 onclick="openModal({'url':'{{ route('quote.create') }}','modalId':'ajaxModal','method':'GET'})"
-                class="std-btn-sm default">Create quotation</a> --}}
+                class="std-btn-sm default">Book Collection</a>
+            <a href="#"
+                onclick="openModal({'url':'{{ route('quote.create') }}','modalId':'ajaxModal','method':'GET'})"
+                class="std-btn-sm default">Book Delivery</a>
         </div>
     </div>
 
