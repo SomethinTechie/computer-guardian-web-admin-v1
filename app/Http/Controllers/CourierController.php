@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Models\QuoteRequest;
 
 class CourierController extends Controller
 {
@@ -20,7 +21,7 @@ class CourierController extends Controller
 
         // return response()->json($shipments[0]);
 
-        $total = 0;
+        $total = count($shipments);
 
         return response()->view('courier.index', compact('shipments', 'total'));
     }
@@ -100,5 +101,49 @@ class CourierController extends Controller
 
         return redirect()->route('courier.index')
             ->with('success', 'Courier deleted successfully');
+    }
+
+    public function createCollection()
+    {
+        $quotes = QuoteRequest::all();
+
+        return response()->view('courier.collection', compact('quotes'));
+    }
+
+    public function createDelivery()
+    {
+        $quotes = QuoteRequest::all();
+
+        return response()->view('courier.delivery', compact('quotes'));
+    }
+
+    public function courierCollectionStore()
+    {
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer a601d99c75fc4c64b5a64288f97d52b4',
+        ])->get('https://api.shiplogic.com/v2/collections');
+
+        $response = $response->json();
+
+        $collections = $response['collections'];
+
+        $total = count($collections);
+
+        return response()->view('courier.collection', compact('collections', 'total'));
+    }
+
+    public function courierDeliveryStore()
+    {
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer a601d99c75fc4c64b5a64288f97d52b4',
+        ])->get('https://api.shiplogic.com/v2/deliveries');
+
+        $response = $response->json();
+
+        $deliveries = $response['deliveries'];
+
+        $total = count($deliveries);
+
+        return response()->view('courier.delivery', compact('deliveries', 'total'));
     }
 }

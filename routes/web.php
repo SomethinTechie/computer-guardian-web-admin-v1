@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\CourierController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
@@ -11,7 +12,6 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CourierController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -110,5 +110,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/courier/{courier}', [CourierController::class, 'show'])->name('courier.show');
     Route::post('/courier/{courier}/update', [CourierController::class, 'update'])->name('courier.update');
     Route::post('/courier/{courier}/delete', [CourierController::class, 'destroy'])->name('courier.delete');
+
+    //book courier collection
+    Route::get('/courier/create/collection', [CourierController::class, 'createCollection'])->name('courier.create.collection');
+    Route::get('/courier/create/delivery', [CourierController::class, 'createDelivery'])->name('courier.create.delivery');
 
 });
