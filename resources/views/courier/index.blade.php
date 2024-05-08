@@ -8,6 +8,19 @@
             Found {{ $total }}  approved quatations
         </div>
         <div class="left">
+            <select name="status" id="" class="std-btn-sm default" style="font-size: 14px;padding: 0 10px;height: 32px!important;float: left;border: none">
+                <option value="Filter by date type">Date type</option>
+                <option value="cancelled">cancelled</option>
+                <option value="collection-failed-attempt">collection-failed-attempt</option>
+                <option value="collected">collected</option>
+            </select>
+            <select name="status" id="" class="std-btn-sm default" style="font-size: 14px;padding: 0 10px;height: 32px!important;float: left;border: none">
+                <option value="Delivered">Status</option>
+                <option value="Delivered">Delivered</option>
+                <option value="cancelled">cancelled</option>
+                <option value="collection-failed-attempt">collection-failed-attempt</option>
+                <option value="collected">collected</option>
+            </select>
             <a href="#"
                 onclick="openModal({'url':'{{ route('quote.create') }}','modalId':'ajaxModal','method':'GET'})"
                 class="std-btn-sm default">Book Collection</a>
