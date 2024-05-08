@@ -11,10 +11,18 @@ class CourierController extends Controller
     {
         //get api call
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer' . 'a601d99c75fc4c64b5a64288f97d52b4',
+            'Authorization' => 'Bearer a601d99c75fc4c64b5a64288f97d52b4',
         ])->get('https://api.shiplogic.com/v2/shipments');
 
-        return response()->json($response->json());
+        $response = $response->json();
+
+        $shipments = $response['shipments'];
+
+        // return response()->json($shipments[0]);
+
+        $total = 0;
+
+        return response()->view('courier.index', compact('shipments', 'total'));
     }
 
     public function create()
@@ -30,7 +38,7 @@ class CourierController extends Controller
 
         //write api call to https: //api.shiplogic.com/v2/rates
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . 'a601d99c75fc4c64b5a64288f97d52b4',
+            'Authorization' => 'Bearer' . 'a601d99c75fc4c64b5a64288f97d52b4',
         ])->post('https://api.shiplogic.com/v2/rates', [
             'Authorization' => 'Bearer ' . 'a601d99c75fc4c64b5a64288f97d52b4',
             'collection_address' => $collection_address,

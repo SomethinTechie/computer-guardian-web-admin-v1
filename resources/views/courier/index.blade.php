@@ -15,25 +15,31 @@
     </div>
 
     <div class="scrollview mt-3">
-        @if (count($quotes) > 0)
+        @if (count($shipments) > 0)
             <table>
-                <th>Quote ID</th>
-                <th>Customer Name</th>
-                <th>Parcel name</th>
+                <th>Count</th>
+                <th>Waybill No</th>
+                <th>Status</th>
                 <th>Service</th>
+                <th>Collection address</th>
+                <th>Delivery address</th>
+                <th>Created</th>
                 <th style="text-align: right">Actions</th>
 
-                @foreach ($quotes as $quote)
+                @foreach ($shipments as $shipment)
                     <tr>
                         <td>
                             <input type="checkbox" style="float: left;width: 20px!important;margin: 5px 10px 0 0">
-                            #89439
+                            {{$shipment['short_tracking_reference']}}
                         </td>
-                        <td>{{$quote->user->name}}</td>
-                        <td>{{$quote->make}}</td>
-                        <td>{{$quote->service->name}}</td>
+                        <td>...</td>
+                        <td>{{$shipment['status']}}</td>
+                        <td>{{$shipment['service_level_code']}}</td>
+                        <td>{{$shipment['collection_address']['street_address']}}</td>
+                        <td>{{$shipment['delivery_address']['street_address']}}</td>
+                        <td>{{ date('F d, Y h:i A', strtotime($shipment['time_created'])) }}</td>
                         <td>
-                            <a href="#" onclick="getView({'url':'{{route('courier.create',[$quote->id])}}','view':'ajax-view'})"
+                            <a href="#" onclick="getView({'url':'{{route('courier.create')}}','view':'ajax-view'})"
                                 class="std-btn-sm default">Book collection</a>
                         </td>
                     </tr>
