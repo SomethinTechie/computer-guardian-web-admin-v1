@@ -42,6 +42,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/quote/create', [QuoteController::class, 'create'])->name('quote.create');
     Route::post('/quote/create/{user}', [QuoteController::class, 'store'])->name('quote.store');
     Route::get('/quote/{quote}', [QuoteController::class, 'adminShow'])->name('quote.show');
+    Route::get('/quote/{quote}/modal', [QuoteController::class, 'approveModal'])->name('quote.approve.modal');
+    Route::get('/quote/{quote}/approve', [QuoteController::class, 'approve'])->name('quote.approve');
 
 //user
     Route::post('/user/{id}/update', [UserController::class, 'user_update'])->name('user.update');

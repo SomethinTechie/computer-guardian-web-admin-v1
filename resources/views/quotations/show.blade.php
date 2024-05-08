@@ -15,6 +15,6 @@
     <p class="listItem" style="border-bottom: none"><span>Requested date:</span> {{$quote->created_at}}</p>
     <div class="btns mt-3 col-md-3">
         <a href="#" class="std-btn" onclick="getView({'url':'{{route('quote.index')}}','view':'ajax-view'})">Back</a>
-        <a href="#" class="std-btn" onclick="openModal({'modalId':'approveQuote'})">Approve</a>
+        <a href="#" class="std-btn" onclick="openModal({'modalId':'ajaxModal','url':'{{route('quote.approve.modal',[$quote->id])}}','method':'GET'})">Approve</a>
     </div>
 </div>

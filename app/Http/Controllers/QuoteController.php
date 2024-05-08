@@ -109,7 +109,6 @@ class QuoteController extends Controller
         ], 200);
     }
 
-
     public function adminShow(Request $request)
     {
         $quote = QuoteRequest::find($request->route('quote'));
@@ -163,5 +162,22 @@ class QuoteController extends Controller
         return response()->json([
             'categories' => Category::all(),
         ], 200);
+    }
+
+    public function approveModal(Request $request)
+    {
+        $quote = QuoteRequest::find($request->route('quote'));
+        return response()->view('quotations.modals.approve', compact('quote'));
+    }
+
+    public function approve(Request $request)
+    {
+        $quote = QuoteRequest::find($request->route('quote'));
+        $quote->status = 'approved';
+        $quote->save();
+
+        $quote = QuoteRequest::find($request->route('quote'));
+        return response()->view('quotations.show', compact('quote'));
+
     }
 }
