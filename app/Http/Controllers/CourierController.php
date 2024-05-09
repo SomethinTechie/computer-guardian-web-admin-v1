@@ -171,7 +171,6 @@ class CourierController extends Controller
             76,
         ];
  
-        //write api call to https: //api.shiplogic.com/v2/rates
         $response = Http::withHeaders([
             'Authorization' => 'Bearer 195d2241d62c4298acde720341b6632f',
         ])->post('https://api.shiplogic.com/v2/shipments', [

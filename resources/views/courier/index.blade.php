@@ -44,14 +44,14 @@
                 @foreach ($shipments as $shipment)
                     <tr>
                         <td>
-                            <input type="checkbox" style="float: left;width: 20px!important;margin: 5px 10px 0 0">
-                            {{$shipment['short_tracking_reference']}}
+                            {{-- <input type="checkbox" style="float: left;width: 20px!important;margin: 5px 10px 0 0"> --}}
+                            {{$shipment['account']['account_code']}}
                         </td>
-                        <td>...</td>
+                        <td>{{$shipment['short_tracking_reference']}}</td>
                         <td>{{$shipment['status']}}</td>
                         <td>{{$shipment['service_level_code']}}</td>
-                        <td>{{$shipment['collection_address']['street_address']}}</td>
-                        <td>{{$shipment['delivery_address']['street_address']}}</td>
+                        <td>{{ \Illuminate\Support\Str::limit($shipment['collection_address']['street_address'], 25) }}</td>
+                        <td>{{ \Illuminate\Support\Str::limit($shipment['delivery_address']['street_address'], 25) }}</td>
                         <td>{{ date('F d, Y h:i A', strtotime($shipment['time_created'])) }}</td>
                         <td>
                             <a href="#" onclick="getView({'url':'{{route('courier.create')}}','view':'ajax-view'})"
