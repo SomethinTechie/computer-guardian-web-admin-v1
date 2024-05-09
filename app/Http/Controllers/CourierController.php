@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\QuoteRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
 
 class CourierController extends Controller
 {
@@ -119,66 +120,81 @@ class CourierController extends Controller
 
     public function courierCollectionStore()
     {
-        $collection_address = [
-            "type" => "Business",
-            "company" => "ShipLogic",
-            "street_address" => "Mall of Africa",
-            "local_area" => "Midrand",
-            "city" => "Johannesburg",
-            "code" => "1685",
-            "zone" => "Gauteng",
-            "country" => "South Africa",
-            "lat" => "-25.99918",
-            "lng" => "28.126293",
-        ];
-        $collection_contact = [
-            "Contact" => "John Doe",
-            "Phone" => "0712345678",
-            "Email" => "mahlatse@gmail.com",
-        ];
+        // $collection_address = ["ShippingAddress" => "Mall of africa"];
+        // $delivery_address = ["ShippingAddress" => "boulders shopping center"];
 
-        $delivery_address = [
-            "type" => "Business",
-            "company" => "ShipLogic",
-            "street_address" => "Mall of Africa",
-            "local_area" => "Midrand",
-            "city" => "Johannesburg",
-            "code" => "1685",
-            "zone" => "Gauteng",
-            "country" => "South Africa",
-            "lat" => "-25.99918",
-            "lng" => "28.126293",
-        ];
-        $delivery_contact = [
-            "Contact" => "Jane Doe",
-            "Phone" => "0712345678",
-            "Email" => "info@gmail.com",
-        ];
+        // $response = Http::withHeaders([
+        //     'Authorization' => 'Bearer 195d2241d62c4298acde720341b6632f',
+        // ])->post('https://api.shiplogic.com/v2/rates', [
+        //     'collection_address' => $collection_address,
+        //     'delivery_address' => $delivery_address,
+        //     'parcels' => [
+        //         [
+        //             "type" => "laptop",
+        //             "submitted_length_cm" => 20,
+        //             "submitted_width_cm" => 30,
+        //             "submitted_height_cm" => 10,
+        //             "submitted_weight_kg" => 2,
+        //         ],
+        //     ],
+        // ]);
 
-        $parcels = [
-            [
-                "parcel_description" => "Standard flyer",
-                "submitted_length_cm" => 20,
-                "submitted_width_cm" => 20,
-                "submitted_height_cm" => 10,
-                "submitted_weight_kg" => 2,
-            ],
-        ];
+        // $response = $response->json();
 
-        $opt_in_rates = [];
+        // return response()->json($response);
 
-        $opt_in_time_based_rates = [
-            76,
-        ];
- 
         $response = Http::withHeaders([
             'Authorization' => 'Bearer 195d2241d62c4298acde720341b6632f',
         ])->post('https://api.shiplogic.com/v2/shipments', [
-            'collection_address' => $collection_address,
-            'delivery_address' => $delivery_address,
-            'parcels' => $parcels,
-            'opt_in_rates' => $opt_in_rates,
-            'opt_in_time_based_rates' => $opt_in_time_based_rates,
+            "collection_address" => [
+                "type" => "business",
+                "company" => "uAfrica.com",
+                "street_address" => "116 Lois Avenue",
+                "local_area" => "Menlyn",
+                "city" => "Pretoria",
+                "code" => "0181",
+                "zone" => "Gauteng",
+                "country" => "ZA",
+                "lat" => -25.7863272,
+                "lng" => 28.277583,
+            ],
+            "collection_contact" => [
+                "name" => "Cornel Rautenbach",
+                "mobile_number" => "",
+                "email" => "cornel+sandy@uafrica.com",
+            ],
+            "delivery_address" => [
+                "type" => "residential",
+                "company" => "",
+                "street_address" => "10 Midas Ave",
+                "local_area" => "Olympus AH",
+                "city" => "Pretoria",
+                "code" => "0081",
+                "zone" => "Gauteng",
+                "country" => "ZA",
+                "lat" => -25.80665579999999,
+                "lng" => 28.334732,
+            ],
+
+            "delivery_contact" => [
+                "name" => "",
+                "mobile_number" => "",
+                "email" => "cornel+sandyreceiver@uafrica.com",
+            ],
+
+            "parcels" => [
+                [
+                    "parcel_description" => "Standard flyer",
+                    "submitted_length_cm" => 20,
+                    "submitted_width_cm" => 20,
+                    "submitted_height_cm" => 10,
+                    "submitted_weight_kg" => 2,
+                ],
+            ],
+            "opt_in_rates" => [],
+            "opt_in_time_based_rates" => [
+                76,
+            ],
             "special_instructions_collection" => "This is a test shipment - DO NOT COLLECT",
             "special_instructions_delivery" => "This is a test shipment - DO NOT DELIVER",
             "declared_value" => 1100,
@@ -214,5 +230,20 @@ class CourierController extends Controller
         $total = count($deliveries);
 
         return response()->view('courier.delivery', compact('deliveries', 'total'));
+    }
+
+    public function qrCode()
+    {
+        $qrCode = QrCode::create('www.rain.co.za')
+            ->setSize(300)
+            ->setMargin(10)
+            ->setEncoding(new Encoding('UTF-8'));
+
+        $writer = new PngWriter();
+        $result = $writer->write($qrCode);
+
+        $dataUri = $result->getDataUri();
+
+        return view('qr-code', ['dataUri' => $dataUri]);
     }
 }

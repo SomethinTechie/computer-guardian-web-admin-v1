@@ -10,6 +10,8 @@ use App\Models\Quote;
 use App\Models\QuoteRequest;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Repair;
 
 class QuoteController extends Controller
 {
@@ -173,8 +175,16 @@ class QuoteController extends Controller
     public function approve(Request $request)
     {
         $quote = QuoteRequest::find($request->route('quote'));
-        $quote->status = 'approved';
+        $quote->status = 'Booked';
         $quote->save();
+
+        //create new repair
+        $repair = Repair::create([
+            'user_id' => $quote->user_id,
+            'quote_request_id' => $quote->id,
+            'status' => 'Booked',
+            'description' => $quote->description,
+        ]);
 
         $quote = QuoteRequest::find($request->route('quote'));
         return response()->view('quotations.show', compact('quote'));

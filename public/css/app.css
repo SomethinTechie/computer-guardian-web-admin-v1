@@ -80,8 +80,8 @@ html {
     opacity: 1;
 }
 .space-between {
-    display: flex;
-    justify-content: space-between;
+    display: flex!important;
+    justify-content: space-between!important;
 }
 .std-btn.primary {
     background-color: var(--primary);
@@ -802,11 +802,21 @@ td span {
     border: none !important;
 }
 .listItem {
+    width: 100%;
     padding: 10px 0;
     border-bottom: dotted 1px #ddd;
     display: flex;
     align-items: center;
-    justify-content: left;
+}
+.listItem.hover {
+    color: #777;
+}
+.listItem.hover:hover {
+    color: #000;
+    cursor: pointer;
+}
+.listItem.active {
+    color: #000!important;
 }
 .listItem span {
     display: block;

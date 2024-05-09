@@ -10,6 +10,8 @@
                 class="mr-2 bi bi-house pc"></i> Overview</a>
         <a href="#" onclick="getView({'url':'{{ route('quote.index') }}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-layers pc"></i> Quotations</a>
+        <a href="#" onclick="getView({'url':'{{ route('repair.index') }}','view':'ajax-view'})"><i
+                class="mr-2 bi bi-tools pc"></i> Repairs</a>
         <a href="#" onclick="getView({'url':'{{ route('branch.index') }}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-bank pc"></i> Branches</a>
         <a href="#" onclick="getView({'url':'/admin/services','view':'ajax-view'})"><i

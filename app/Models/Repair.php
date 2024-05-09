@@ -13,7 +13,7 @@ class Repair extends Model
 
     protected $fillable = [
         'user_id',
-        'quote_id',
+        'quote_request_id',
         'status',
         'description',
     ];
@@ -23,8 +23,8 @@ class Repair extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function quote()
+    public function quoteRequest()
     {
-        return $this->belongsTo(Quote::class);
+        return $this->belongsTo(QuoteRequest::class, 'quote_request_id');
     }
 }

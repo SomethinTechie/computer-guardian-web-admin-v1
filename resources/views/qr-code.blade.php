@@ -1,0 +1,1 @@
+<img src="{{ $dataUri }}" alt="QR Code">

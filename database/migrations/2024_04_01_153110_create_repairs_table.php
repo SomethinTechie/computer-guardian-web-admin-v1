@@ -16,7 +16,7 @@ class CreateRepairsTable extends Migration
         Schema::create('repairs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('quote_id')->constrained();
+            $table->foreignId('quote_request_id');
             $table->string('status');
             $table->string('description');
             $table->timestamps();

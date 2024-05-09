@@ -15,7 +15,11 @@ class RepairController extends Controller
      */
     public function index()
     {
-        //
+        $repairs = Repair::with('quoteRequest','user')->get();
+
+        $total = Repair::count();
+
+        return response()->view('repairs.index', compact('repairs', 'total'));
     }
 
     /**
@@ -94,5 +98,10 @@ class RepairController extends Controller
     public function destroy(Repair $repair)
     {
         //
+    }
+
+    public function statuses(Repair $repair)
+    {
+        return response()->view('repairs.modals.statuses', compact('repair'));
     }
 }

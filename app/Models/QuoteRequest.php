@@ -36,4 +36,9 @@ class QuoteRequest extends Model
     {
         return $this->belongsTo(Service::class);
     }
+
+    public function repair()
+    {
+        return $this->hasOne(Repair::class, 'quote_request_id');
+    }
 }

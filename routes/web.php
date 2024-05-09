@@ -12,6 +12,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,9 +44,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/quote/create/{user}', [QuoteController::class, 'store'])->name('quote.store');
     Route::get('/quote/{quote}', [QuoteController::class, 'adminShow'])->name('quote.show');
     //get approve quote modal
-    Route::get('/quote/{quote}/approve', [QuoteController::class, 'approveModal'])->name('quote.approve.modal');
+    Route::get('/quote/{quote}/modal', [QuoteController::class, 'approveModal'])->name('quote.approve.modal');
     //approve quote route
-    Route::post('/quote/{quote}/approve', [QuoteController::class, 'approve'])->name('quote.approve');
+    Route::get('/quote/{quote}/approve', [QuoteController::class, 'approve'])->name('quote.approve');
 
 //user
     Route::post('/user/{id}/update', [UserController::class, 'user_update'])->name('user.update');
@@ -98,6 +99,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/repair/{repair}', [RepairController::class, 'show'])->name('repair.show');
     Route::post('/repair/{repair}/update', [RepairController::class, 'update'])->name('repair.update');
     Route::post('/repair/{repair}/delete', [RepairController::class, 'destroy'])->name('repair.delete');
+    //repair statuses
+    Route::get('/repair/{repair}/statuses', [RepairController::class, 'statuses'])->name('repair.statuses');
 
 //customers
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
@@ -122,5 +125,8 @@ Route::middleware(['auth'])->group(function () {
     //book courier collection
     Route::post('/courier/create/collection', [CourierController::class, 'courierCollectionStore'])->name('courier.store.collection');
     Route::post('/courier/create/delivery', [CourierController::class, 'courierDeliveryStore'])->name('courier.store.delivery');
+
+    //QR code
+    Route::get('/qr-code', [CourierController::class, 'qrCode'])->name('qr.code');
 
 });
