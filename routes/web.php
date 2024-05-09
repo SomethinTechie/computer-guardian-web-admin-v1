@@ -130,6 +130,7 @@ Route::middleware(['auth'])->group(function () {
 
     //QR code
     Route::get('/qr-code/{repair}', [CourierController::class, 'qrCode'])->name('qr.code');
-    Route::get('/qr-code/{repair}/repair', [CourierController::class, 'qrCodeRepair'])->name('qr.code.repair');
 
 });
+
+Route::get('/qr-code/{repair}/repair', [CourierController::class, 'qrCodeRepair'])->name('qr.code.repair');
