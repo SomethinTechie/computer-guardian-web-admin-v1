@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Repair;
 
 class HomeController extends Controller
 {
@@ -23,12 +23,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
+        $repairs = Repair::all();
+        $total = Repair::all()->count();
+        $booked = Repair::where('status', 'Booked')->count();
+        $completed = Repair::where('status', 'Completed')->count();
+        $collected = Repair::where('status', 'Collected')->count();
 
+        return view('home', compact('repairs', 'total', 'booked', 'completed', 'collected'));
+    }
 
     public function overview()
     {
-        return view('overview');
+        $repairs = Repair::all();
+        $total = Repair::all()->count();
+        $booked = Repair::where('status', 'Booked')->count();
+        $completed = Repair::where('status', 'Completed')->count();
+        $collected = Repair::where('status', 'Collected')->count();
+
+        return view('overview', compact('repairs', 'total', 'booked', 'completed', 'collected'));
     }
 }

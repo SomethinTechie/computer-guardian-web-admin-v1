@@ -101,6 +101,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/repair/{repair}/delete', [RepairController::class, 'destroy'])->name('repair.delete');
     //repair statuses
     Route::get('/repair/{repair}/statuses', [RepairController::class, 'statuses'])->name('repair.statuses');
+    //repair.update.status
+    Route::get('/repair/{repair}/update/status', [RepairController::class, 'updateStatus'])->name('repair.update.status');
 
 //customers
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');

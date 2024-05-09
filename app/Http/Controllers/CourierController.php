@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\QuoteRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreRepairRequest;
 use App\Http\Requests\UpdateRepairRequest;
 use App\Models\Repair;
+use Illuminate\Http\Request;
+
 
 class RepairController extends Controller
 {
@@ -102,6 +104,17 @@ class RepairController extends Controller
 
     public function statuses(Repair $repair)
     {
+        return response()->view('repairs.modals.statuses', compact('repair'));
+    }
+
+    public function updateStatus(Repair $repair,Request $request)
+    {
+        $status = $request->get('status');
+
+        $repair->status = $status;
+
+        $repair->save();
+
         return response()->view('repairs.modals.statuses', compact('repair'));
     }
 }
