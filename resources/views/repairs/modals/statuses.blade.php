@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="btns" style="font-size: 14px">
-            <a href="#" class="std-btn" onclick="closeModal({'modalId':'ajaxModal'})" style="border-radius: 6px;font-size: 12px">Close</a>
+            <a href="#" class="std-btn" onclick="getView({'url':'{{ route('repair.index') }}','view':'ajax-view','modalId':'ajaxModal'})" style="border-radius: 6px;font-size: 12px">Done</a>
         </div>
     </div>
 </div>

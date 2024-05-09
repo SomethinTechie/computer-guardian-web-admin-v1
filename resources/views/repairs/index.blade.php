@@ -17,7 +17,8 @@
             <table>
                 <th>Service</th>
                 <th>Status</th>
-                <th>Customer phone</th>
+                <th>Date booked</th>
+                <th>Customer name</th>
                 <th>Email</th>
                 <th style="text-align: right">Actions</th>
 
@@ -27,9 +28,12 @@
                             {{$repair->quoteRequest->service->name}}
                         </td>
                         <td>{{$repair->status}}</td>
-                        <td>{{$repair->quoteRequest->user->phone}}</td>
+                        <td>{{$repair->created_at}}</td>
+                        <td>{{$repair->quoteRequest->user->name}}</td>
                         <td>{{$repair->quoteRequest->user->email}}</td>
                         <td>
+                            <a href="#" onclick="openModal({'url':'{{route('qr.code',[$repair->id])}}','modalId':'ajaxModal','method':'GET'})"
+                                class="std-btn-sm default"><i class="bi bi-qr-code-scan"></i></a>
                             <a href="#" onclick="openModal({'url':'{{route('repair.statuses',[$repair->id])}}','modalId':'ajaxModal','method':'GET'})"
                                 class="std-btn-sm default">Update status</a>
                         </td>

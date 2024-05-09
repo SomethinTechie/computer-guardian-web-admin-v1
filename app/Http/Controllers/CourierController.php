@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\QuoteRequest;
+use App\Models\Repair;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Endroid\QrCode\Encoding\Encoding;
@@ -234,9 +235,9 @@ class CourierController extends Controller
         return response()->view('courier.delivery', compact('deliveries', 'total'));
     }
 
-    public function qrCode()
+    public function qrCode(Repair $repair)
     {
-        $qrCode = QrCode::create('www.rain.co.za')
+        $qrCode = QrCode::create('https://app.computerguardian.co.za/qr-code/' . $repair->id . '/repair')
             ->setSize(300)
             ->setMargin(10)
             ->setEncoding(new Encoding('UTF-8'));
@@ -246,6 +247,12 @@ class CourierController extends Controller
 
         $dataUri = $result->getDataUri();
 
-        return view('qr-code', ['dataUri' => $dataUri]);
+        return response()->view('qr-code', compact('dataUri'));
+    }
+
+    public function qrCodeRepair(Repair $repair)
+    {
+        $repair->load('user','quoteRequest');
+        return response()->view('repairs.qr-code-repair', compact('repair'));
     }
 }

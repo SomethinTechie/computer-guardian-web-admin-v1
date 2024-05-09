@@ -129,6 +129,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/courier/create/delivery', [CourierController::class, 'courierDeliveryStore'])->name('courier.store.delivery');
 
     //QR code
-    Route::get('/qr-code', [CourierController::class, 'qrCode'])->name('qr.code');
+    Route::get('/qr-code/{repair}', [CourierController::class, 'qrCode'])->name('qr.code');
+    Route::get('/qr-code/{repair}/repair', [CourierController::class, 'qrCodeRepair'])->name('qr.code.repair');
 
 });
