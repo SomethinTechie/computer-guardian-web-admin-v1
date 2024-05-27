@@ -16,6 +16,8 @@
                 class="mr-2 bi bi-bank pc"></i> Branches</a>
         <a href="#" onclick="getView({'url':'/admin/services','view':'ajax-view'})"><i
                 class="mr-2 bi bi-file-earmark-text pc"></i> Service categories</a>
+        <a href="#" onclick="getView({'url':'{{ route('products.index') }}','view':'ajax-view'})"><i
+                class="mr-2 bi bi-cart pc"></i> Products</a>
         <a href="#" onclick="getView({'url':'{{ route('courier.index') }}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-people pc"></i> Customers</a>
         <a href="#" onclick="getView({'url':'{{ route('courier.index') }}','view':'ajax-view'})"><i

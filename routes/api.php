@@ -10,6 +10,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -87,3 +88,10 @@ Route::post('/repair/create', [RepairController::class, 'store']);
 Route::get('/repair/{repair}', [RepairController::class, 'show']);
 Route::post('/repair/{repair}/update', [RepairController::class, 'update']);
 Route::post('/repair/{repair}/delete', [RepairController::class, 'destroy']);
+
+//products
+Route::get('/products', [ProductController::class, 'index']);
+Route::post('/product/create', [ProductController::class, 'store']);
+Route::get('/product/{product}', [ProductController::class, 'show']);
+Route::post('/product/{product}/update', [ProductController::class, 'update']);
+Route::post('/product/{product}/delete', [ProductController::class, 'destroy']);

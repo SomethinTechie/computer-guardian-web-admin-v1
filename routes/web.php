@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ParcelController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\RepairController;
 use App\Http\Controllers\ServiceController;
@@ -130,6 +131,14 @@ Route::middleware(['auth'])->group(function () {
 
     //QR code
     Route::get('/qr-code/{repair}', [CourierController::class, 'qrCode'])->name('qr.code');
+
+    //products
+    Route::get('/products', [ProductController::class, 'admin_index'])->name('products.index');
+    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+    Route::get('/product/{product}', [ProductController::class, 'show']);
+    Route::post('/product/{product}/update', [ProductController::class, 'update']);
+    Route::post('/product/{product}/delete', [ProductController::class, 'destroy']);
 
 });
 
