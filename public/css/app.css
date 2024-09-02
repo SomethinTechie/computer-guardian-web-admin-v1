@@ -122,17 +122,18 @@ html {
     align-items: center;
     padding: 20px 25px;
     border-bottom: solid 0.1px #eee;
+    font-size: 12px;
 }
 .side-navigation a {
     width: 100%;
-    height: 50px;
+    height: 40px;
     display: flex;
     align-items: center;
     color: #535353;
     padding: 0 25px;
     text-decoration: none;
     position: relative;
-    font-size: 14px;
+    font-size: 12px;
 }
 .side-navigation a:hover {
     color: #1c1342;
@@ -209,9 +210,12 @@ html {
 .nav-sect {
     width: 100%;
     height: 40px;
-    font-size: 12px;
+    font-size: 10px;
     padding: 25px;
     opacity: 0.6;
+}
+.nav-sect a {
+    font-size: 12px!important;
 }
 .row {
     width: 100%;
@@ -296,11 +300,13 @@ p {
 }
 .input-group {
     width: 100%;
-    border-bottom: solid 0.1px #eee;
+    border: solid 0.1px #ddd;
+    border-radius: 6px;
+    background-color: #f7f7f7;
 }
 
 .input-group input {
-    padding: 10px 0;
+    padding: 10px 20px;
     width: 100%;
     border: none;
     /* background-color: transparent; */
@@ -407,6 +413,8 @@ h6 {
     justify-content: center;
     background-color: #fff;
     border-radius: 10px 10px 0 0;
+    border-bottom: solid .1px #ddd;
+    text-transform: uppercase;
 }
 .bb1 {
     border-bottom: solid 0.1px #ddd;
@@ -433,7 +441,7 @@ input {
     justify-content: center;
     border-radius: 0;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px!important;
     text-transform: uppercase;
 }
 .btns .std-btn:first-child {
@@ -491,9 +499,13 @@ p span {
     display: flex;
     align-items: center;
     font-size: 14px;
+    cursor: pointer;
 }
 .overview-card-insight i {
     color: val(--primary) !important;
+}
+input {
+    font-size: 14px!important;
 }
 .op6 {
     opacity: 0.6 !important;
@@ -705,13 +717,13 @@ input[type="checkbox"]:checked {
 th {
     padding: 15px 20px;
     text-transform: uppercase !important;
-    font-size: 12px;
+    font-size: 10px;
     color: #000;
 }
 table tr td {
     padding: 15px 20px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
 }
 tr {
     padding: 15px 20px;
@@ -807,6 +819,7 @@ td span {
     border-bottom: dotted 1px #ddd;
     display: flex;
     align-items: center;
+    font-size: 12px;
 }
 .listItem.hover {
     color: #777;
@@ -832,7 +845,7 @@ td span {
     border-radius: 5px;
 }
 .btns .std-btn {
-    padding: 20px 0;
+    padding: 10px 0;
     font-size: 14px;
     text-transform: uppercase;
     border-radius: 5px;

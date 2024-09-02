@@ -5,11 +5,23 @@ let campaignTypeRadio
 let today
 //GET VIEWS FROM AJAX CALLS
 function getView(req) {
+    
+    if (req.filter) {
+        const parsedUrl = new URL(req.url)
+        const searchParams = new URLSearchParams(parsedUrl.search)
+
+        searchParams.set('status', req.filter);
+
+        parsedUrl.search = searchParams.toString()
+        req.url = parsedUrl.toString()
+    }
+
     $(`.${req.view}`).html(`
         <div style="width: 100%;height: 100vh;display: flex;align-items-center;justify-content: center;padding-top:300px">
-            <img src="logos/rainmaker-preloader.gif" width="35" height="35" alt="" style="border-radius: 35px">
+            Loading...
         </div>
     `)
+
     if (req.noevent !== true) {
         $('a').removeClass('active')
         window.event.target.classList.add('active')

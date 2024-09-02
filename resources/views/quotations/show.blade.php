@@ -1,5 +1,12 @@
 <div class="" style="width: 100%;background: #f7f7f7;padding: 30px;border-radius: 4px">
-    <h3>Quote request</h3><br>
+    <h3>
+        Quote request
+        @if($quote->status === 'Pending')
+            <a href="#" class="std-btn-sm default" onclick="openModal({'url':'{{route('quote.approve',[$quote->id])}}','modalId':'approveQuote','method':'GET'})">Approve quotation</a>
+        @else
+            <a href="#" class="std-btn-sm default">Approved</a>
+        @endif
+    </h3><br>
     <p class="listItem"><span>Status:</span> {{$quote->status}}</p>
     <p class="listItem"><span>Device:</span> {{$quote->device}}</p>
     <p class="listItem"><span>Description:</span> {{$quote->description}}</p>
@@ -13,12 +20,4 @@
     <p class="listItem"><span>Pickup:</span> {{$quote->pickup}}</p>
     <p class="listItem"><span>Pickup date:</span> {{$quote->pickup_date}}</p>
     <p class="listItem" style="border-bottom: none"><span>Requested date:</span> {{$quote->created_at}}</p>
-    <div class="btns mt-3 col-md-3">
-        <a href="#" class="std-btn" onclick="getView({'url':'{{route('quote.index')}}','view':'ajax-view'})">Back</a>
-        @if($quote->status === 'Pending')
-            <a href="#" class="std-btn" onclick="openModal({'url':'{{route('quote.approve',[$quote->id])}}','modalId':'approveQuote','method':'GET'})">Approve</a>
-        @else
-            <a href="#" class="std-btn">Approved</a>
-        @endif
-    </div>
 </div>

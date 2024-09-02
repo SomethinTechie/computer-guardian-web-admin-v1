@@ -10,7 +10,7 @@
                 class="mr-2 bi bi-house pc"></i> Overview</a>
         <a href="#" onclick="getView({'url':'{{ route('quote.index') }}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-layers pc"></i> Quotations</a>
-        <a href="#" onclick="getView({'url':'{{ route('repair.index') }}','view':'ajax-view'})"><i
+        <a href="#" onclick="getView({'url':'{{ route('repair.index',['status' => 'pending']) }}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-tools pc"></i> Repairs</a>
         <a href="#" onclick="getView({'url':'{{ route('branch.index') }}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-bank pc"></i> Branches</a>
@@ -54,7 +54,7 @@
         <div class="ajax-view">
             <div class="overview-card">
                 <div class="col-md-3">
-                    <div class="overview-card-insight">
+                    <div class="overview-card-insight" onclick="getView({'url':'{{ route('repair.index',['status' => 'pending']) }}','view':'ajax-view'})">
                         <span>
                             <i class="bi bi-layers pc"></i><br><br>
                             Total Repairs <br><br>
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="overview-card-insight">
+                    <div class="overview-card-insight" onclick="getView({'url':'{{ route('repair.index',['status' => 'booked']) }}','view':'ajax-view'})">
                         <span>
                             <i class="bi bi-layers-half pc"></i><br><br>
                             Booked <br><br>
@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="overview-card-insight">
+                    <div class="overview-card-insight" onclick="getView({'url':'{{ route('repair.index',['status' => 'collected']) }}','view':'ajax-view'})">
                         <span>
                             <i class="bi bi-check-circle-fill pc"></i><br><br>
                             Collected <br><br>
@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="overview-card-insight">
+                    <div class="overview-card-insight" onclick="getView({'url':'{{ route('repair.index',['status' => 'completed']) }}','view':'ajax-view'})">
                         <span>
                             <i class="bi bi-layers-fill pc"></i><br><br>
                             Completed <br><br>
@@ -91,7 +91,7 @@
                 </div>
             </div>
             <div class="col-md-12" style="height: 100px!important;">
-                <div class="header" style="font-size: 14px">RECENT ACTIVITY</div>
+                <div class="header" style="font-size: 12px">RECENT ACTIVITY</div>
             </div>
         </div>
     </div>

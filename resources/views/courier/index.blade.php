@@ -38,7 +38,6 @@
                 <th>Service</th>
                 <th>Collection address</th>
                 <th>Delivery address</th>
-                <th>Created</th>
                 <th style="text-align: right">Actions</th>
 
                 @foreach ($shipments as $shipment)
@@ -52,7 +51,6 @@
                         <td>{{$shipment['service_level_code']}}</td>
                         <td>{{ \Illuminate\Support\Str::limit($shipment['collection_address']['street_address'], 25) }}</td>
                         <td>{{ \Illuminate\Support\Str::limit($shipment['delivery_address']['street_address'], 25) }}</td>
-                        <td>{{ date('F d, Y h:i A', strtotime($shipment['time_created'])) }}</td>
                         <td>
                             <a href="#" onclick="getView({'url':'{{route('courier.create')}}','view':'ajax-view'})"
                                 class="std-btn-sm default">Cancel</a>

@@ -15,13 +15,17 @@ class RepairController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $repairs = Repair::with('quoteRequest','user')->get();
+        // return response()->json($request->get('status'));
+        $status = $request->get('status');
+        $repairs = Repair::with('quoteRequest','user')
+        ->where('status', $status)
+        ->get();
 
-        $total = Repair::count();
+        $total = Repair::where('status', $status)->count();
 
-        return response()->view('repairs.index', compact('repairs', 'total'));
+        return response()->view('repairs.index', compact('repairs', 'total','status'));
     }
 
     /**

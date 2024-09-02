@@ -69,7 +69,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/branch/create', [BranchController::class, 'create'])->name('branch.create');
     Route::post('/branch/store', [BranchController::class, 'store'])->name('branch.store');
     Route::get('/branch/{branch}', [BranchController::class, 'show'])->name('branch.show');
+    Route::get('/branch/{branch}/edit', [BranchController::class, 'edit'])->name('branch.edit');
     Route::post('/branch/{branch}/update', [BranchController::class, 'update'])->name('branch.update');
+    Route::get('/branch/{branch}/delete/confirm', [BranchController::class])->name('branch.confirm.delete');
     Route::post('/branch/{branch}/delete', [BranchController::class, 'destroy'])->name('branch.delete');
 
 //messages
@@ -133,7 +135,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/qr-code/{repair}', [CourierController::class, 'qrCode'])->name('qr.code');
 
     //products
-    Route::get('/products', [ProductController::class, 'admin_index'])->name('products.index');
+    Route::get('/admin/products', [ProductController::class, 'admin_index'])->name('products.index');
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
     Route::get('/product/{product}', [ProductController::class, 'show']);

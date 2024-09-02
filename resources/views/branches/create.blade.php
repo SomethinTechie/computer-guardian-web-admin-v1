@@ -1,8 +1,10 @@
-<div style="width: 400px;padding: 30px">
+<div style="width: 400px;">
     <form id="branchForm" action="#" method="POST">
         <div class="formSect active">
-            <h2 class="mb-3">Add new branch</h2>
-            <div class="from-group">
+            <div class="modal-header">
+                Add new branch
+            </div>
+            <div class="from-group" style="padding: 10px 30px 30px 30px">
                 <label for="name">Branch name</label>
                 <div class="input-group">
                     <input type="text" name="name" id="name" class="form-control"
@@ -25,7 +27,7 @@
                 <div class="error" data-name="phone"></div>
 
                 <label for="name">Email</label>
-                <div class="input-group" style="border-bottom: none">
+                <div class="input-group">
                     <input type="email" name="email" id="name" class="form-control"
                         placeholder="Enter email...">
                 </div>

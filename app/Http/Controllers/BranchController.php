@@ -61,7 +61,7 @@ class BranchController extends Controller
      */
     public function edit(Branch $branch)
     {
-        //
+        return response()->view('branches.edit',compact('branch'));
     }
 
     /**
@@ -73,7 +73,7 @@ class BranchController extends Controller
      */
     public function update(UpdateBranchRequest $request, Branch $branch)
     {
-        //
+        return response()->json('branch updated');
     }
 
     /**

@@ -1,4 +1,4 @@
-<div class="" style="width: 300px">
+<div class="" style="width: 400px">
     <div class="modal-header bb1">Update repair status</div>
     <div class="formSect active" style="padding: 0 20px 20px 20px">
         <div class="list" style="font-size: 12px">

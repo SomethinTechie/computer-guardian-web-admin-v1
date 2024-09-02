@@ -39,8 +39,6 @@
                                 class="std-btn-sm default">View</a>
                             <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})"
                                 class="std-btn-sm default">Edit</a>
-                            <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'DELETE'})"
-                                class="std-btn-sm default">Delete</a>
                         </td>
                     </tr>
                 @endforeach

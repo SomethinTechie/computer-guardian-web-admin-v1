@@ -32,7 +32,7 @@
                     <div class="row mb-3">
                         <label for="email" class="">{{ __('Email Address') }}</label>
                         <div class="input-group">
-                            <input id="email" placeholder="Enter email..." type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus style="border-bottom: none">
+                            <input id="email" placeholder="Enter email..." type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus style="border-bottom: none;background: transparent;padding: 10px">
                         </div>
                         <div class="row" style="font-size: 12px;color: #cc0000;padding: 4px 25px">
                             @error('email')
@@ -47,7 +47,7 @@
 
                         <div class="input-group">
                                 <div class="col-md-12">
-                                <input id="password" placeholder="Enter password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="border: none">
+                                <input id="password" placeholder="Enter password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="border: none;background: transparent;padding: 10px">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

@@ -4,11 +4,22 @@
 </div>
 <div class="col-md-12 std-padding-x">
     <div class="message" style="background: #eee;border-radius: 6px;border: solid .1px #ddd;padding: 10px 10px 10px 18px">
-        <div class="right">
+        <div class="left">
             Found  <strong style="padding: 0 5px"> {{$total}} </strong> repairs
         </div>
-        <div class="left">
-            {{-- <a href="#" onclick="openModal({'url':'{{route('branch.create')}}','modalId':'ajaxModal','method':'GET'})" class="std-btn-sm default">Add branch</a> --}}
+        <div class="right">
+            <select onchange="getView({'url':'{{ route('repair.index') }}','view':'ajax-view','filter':this.value})" name="status" id="" class="std-btn-sm default" style="font-size: 14px;padding: 0 10px;height: 32px!important;float: left;border: none;margin-right: 20px">
+                <option value="">{{$status}}</option>
+                <option value="booked">Booked</option>
+                <option value="collected">Collected</option>
+                <option value="check-in">Check-in</option>
+                <option value="diagnosis">Diagnosis</option>
+                <option value="reparing">Reparing</option>
+                <option value="invocing">Invocing</option>
+                <option value="returning/Awaiting collection">Returning/Awaiting collection</option>
+                <option value="completed">Completed</option>
+                <option value="rating">Rating</option>
+            </select>
         </div>
     </div>
 
@@ -28,7 +39,7 @@
                             {{$repair->quoteRequest->service->name}}
                         </td>
                         <td>{{$repair->status}}</td>
-                        <td>{{$repair->created_at}}</td>p
+                        <td>{{$repair->created_at}}</td>
                         <td>{{$repair->quoteRequest->user->name}}</td>
                         <td>{{$repair->quoteRequest->user->email}}</td>
                         <td>
@@ -41,8 +52,8 @@
                 @endforeach
             </table>
         @else
-            <div class="message">
-                <p>No repairs added yet</p>
+            <div class="message" style="padding: 0 20px;font-size: 14px;opacity: .6">
+                <p>No {{$status}} repairs</p>
             </div>
         @endif
     </div>
