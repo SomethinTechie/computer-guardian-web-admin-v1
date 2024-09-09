@@ -20,7 +20,7 @@
         <div class="header space-between no-borders" style="padding: 20px 0 0 0">
             <h6>Ticket image</h6>
         </div>
-        <div class="listItem" style="border-bottom: none"><span style="width: 150px">Image:</span> <a href="#">open</a></div>
+        <div class="listItem" style="border-bottom: none"><span style="width: 150px">Image:</span> <a href="{{asset('support/' . $ticket->image)}}">open</a></div>
 
         <div class="btns mt-3" style="margin: 0 0 30px 0">
             <a href="#" class="std-btn" onclick="getView({'url':'{{route('support.index')}}','view':'ajax-view','modalId':'ajaxModal'})" style="border-right: 0">close</a>
