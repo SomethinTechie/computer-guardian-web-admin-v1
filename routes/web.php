@@ -13,6 +13,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BannerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -57,12 +58,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/quote/request/form/data', [QuoteController::class, 'formData'])->name('quote.request.form.data');
 
 //services
-    Route::get('/services', [ServiceController::class, 'index']);
+    Route::get('/services', [ServiceController::class, 'index'])->name('service.index');
     Route::get('/service/create', [ServiceController::class, 'create'])->name('service.create');
     Route::post('/service/store', [ServiceController::class, 'store'])->name('service.store');
     Route::get('/service/{service}', [ServiceController::class, 'show'])->name('service.show');
     Route::post('/service/{service}/update', [ServiceController::class, 'update'])->name('service.update');
-    Route::post('/service/{service}/delete', [ServiceController::class, 'destroy'])->name('service.delete');
+    Route::get('/service/{service}/confirm', [ServiceController::class, 'confirmDeleteModal'])->name('service.delete.modal');
+    Route::get('/service/{service}/delete', [ServiceController::class, 'destroy'])->name('service.delete');
 
 //branches
     Route::get('/branches', [BranchController::class, 'index'])->name('branch.index');
@@ -71,8 +73,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/branch/{branch}', [BranchController::class, 'show'])->name('branch.show');
     Route::get('/branch/{branch}/edit', [BranchController::class, 'edit'])->name('branch.edit');
     Route::post('/branch/{branch}/update', [BranchController::class, 'update'])->name('branch.update');
-    Route::get('/branch/{branch}/delete/confirm', [BranchController::class])->name('branch.confirm.delete');
-    Route::post('/branch/{branch}/delete', [BranchController::class, 'destroy'])->name('branch.delete');
+    Route::get('/branch/{branch}/delete/confirm', [BranchController::class, 'deleteBranchModal'])->name('branch.confirm.delete');
+    Route::get('/branch/{branch}/delete', [BranchController::class, 'destroy'])->name('branch.delete');
 
 //messages
     Route::get('/messages', [MessageController::class, 'index'])->name('message.index');
@@ -83,6 +85,7 @@ Route::middleware(['auth'])->group(function () {
 
 //supports
     Route::get('/supports', [SupportController::class, 'index'])->name('support.index');
+    Route::post('/support/create', [SupportController::class, 'store'])->name('create.support');
     Route::post('/support/create', [SupportController::class, 'store'])->name('create.support');
     Route::get('/support/{support}', [SupportController::class, 'show'])->name('show.support');
     Route::post('/support/{support}/update', [SupportController::class, 'update'])->name('update.support');
@@ -108,12 +111,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/repair/{repair}/update/status', [RepairController::class, 'updateStatus'])->name('repair.update.status');
 
 //customers
-    Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
-    Route::get('/customers/{user_id}', [CustomerController::class, 'user_index']);
-    Route::post('/customer/create', [CustomerController::class, 'store'])->name('customer.create');
-    Route::get('/customer/{customer}', [CustomerController::class, 'show'])->name('customer.show');
-    Route::post('/customer/{customer}/update', [CustomerController::class, 'update'])->name('customer.update');
-    Route::post('/customer/{customer}/delete', [CustomerController::class, 'destroy'])->name('customer.delete');
+    Route::get('/customers', [App\Http\Controllers\CustomerController::class, 'index'])->name('customers.index');
+    Route::get('/customers/{user_id}', [App\Http\Controllers\CustomerController::class, 'user_index']);
+    Route::post('/customer/create', [App\Http\Controllers\CustomerController::class, 'store'])->name('customer.create');
+    Route::get('/customer/{user_id}', [App\Http\Controllers\CustomerController::class, 'show'])->name('customer.show');
+    Route::post('/customer/{customer}/update', [App\Http\Controllers\CustomerController::class, 'update'])->name('customer.update');
+    Route::post('/customer/{customer}/delete', [App\Http\Controllers\CustomerController::class, 'destroy'])->name('customer.delete');
+    Route::get('/customer/show/{user_id}', [CustomerController::class, 'show'])->name('show.customer');
 
     //Courier
     Route::get('/courier', [CourierController::class, 'index'])->name('courier.index');
@@ -138,9 +142,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/products', [ProductController::class, 'admin_index'])->name('products.index');
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
-    Route::get('/product/{product}', [ProductController::class, 'show']);
+    Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
     Route::post('/product/{product}/update', [ProductController::class, 'update']);
-    Route::post('/product/{product}/delete', [ProductController::class, 'destroy']);
+    Route::get('/product/{product}/modal', [ProductController::class, 'deleteModal'])->name('product.delete.modal');
+    Route::get('/product/{product}/delete', [ProductController::class, 'destroy'])->name('product.delete');
+
+
+    //Banners
+    Route::get('/banners/index', [BannerController::class, 'index'])->name('banners.index');
+    Route::get('/banners/create', [BannerController::class, 'create'])->name('banner.create');
+    Route::post('/banners/store', [BannerController::class, 'store'])->name('banner.store');
+    Route::get('/banners/{banner}/show', [BannerController::class, 'show'])->name('banner.show');
+    Route::get('/banners/{banner}/update', [BannerController::class, 'update'])->name('banner.update');
+    Route::get('/banners/{banner}/delete', [BannerController::class, 'destroy'])->name('banner.delete');
 
 });
 

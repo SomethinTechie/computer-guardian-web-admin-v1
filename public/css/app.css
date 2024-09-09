@@ -80,8 +80,8 @@ html {
     opacity: 1;
 }
 .space-between {
-    display: flex!important;
-    justify-content: space-between!important;
+    display: flex !important;
+    justify-content: space-between !important;
 }
 .std-btn.primary {
     background-color: var(--primary);
@@ -215,7 +215,7 @@ html {
     opacity: 0.6;
 }
 .nav-sect a {
-    font-size: 12px!important;
+    font-size: 12px !important;
 }
 .row {
     width: 100%;
@@ -413,7 +413,7 @@ h6 {
     justify-content: center;
     background-color: #fff;
     border-radius: 10px 10px 0 0;
-    border-bottom: solid .1px #ddd;
+    border-bottom: solid 0.1px #ddd;
     text-transform: uppercase;
 }
 .bb1 {
@@ -441,11 +441,12 @@ input {
     justify-content: center;
     border-radius: 0;
     text-decoration: none;
-    font-size: 12px!important;
+    font-size: 12px !important;
     text-transform: uppercase;
 }
 .btns .std-btn:first-child {
     border-radius: 5px 0 0 5px;
+    border-right: solid 1px #ddd;
 }
 .btns .std-btn:last-child {
     border-radius: 0 5px 5px 0;
@@ -505,7 +506,7 @@ p span {
     color: val(--primary) !important;
 }
 input {
-    font-size: 14px!important;
+    font-size: 14px !important;
 }
 .op6 {
     opacity: 0.6 !important;
@@ -721,7 +722,7 @@ th {
     color: #000;
 }
 table tr td {
-    padding: 15px 20px;
+    padding: 10px 20px;
     cursor: pointer;
     font-size: 12px;
 }
@@ -829,7 +830,7 @@ td span {
     cursor: pointer;
 }
 .listItem.active {
-    color: #000!important;
+    color: #000 !important;
 }
 .listItem span {
     display: block;
@@ -841,7 +842,7 @@ td span {
 }
 .btns {
     padding: 0;
-    border: solid .1px #ddd;
+    border: solid 0.1px #ddd;
     border-radius: 5px;
 }
 .btns .std-btn {
@@ -871,4 +872,9 @@ td span {
     background-color: transparent;
     border: none;
     width: 100%;
+}
+
+.banner {
+    with: 20%;
+    padding: 20px;
 }

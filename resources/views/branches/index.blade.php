@@ -31,9 +31,9 @@
                         <td>{{$branch->email}}</td>
                         <td>
                             <a href="#" onclick="openModal({'url':'{{route('branch.edit',[$branch->id])}}','modalId':'ajaxModal','method':'GET'})"
-                                class="std-btn-sm default">Edit</a>
-                            <a href="#" onclick="openModal({'url':'{{route('branch.confirm.delete',[$branch->id])}}','modalId':'ajaxModal','method':'DELETE'})"
-                                class="std-btn-sm default">Delete</a>
+                                class="std-btn-sm default"><i class="bi bi-pen"></i></a>
+                            <a href="#" onclick="openModal({'url':'{{route('branch.confirm.delete',[$branch->id])}}','modalId':'ajaxModal','method':'GET'})"
+                                class="std-btn-sm default"><i class="bi bi-trash"></i></a>
                         </td>
                     </tr>
                 @endforeach

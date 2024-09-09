@@ -1,10 +1,13 @@
-<div style="width: 400px;padding: 30px">
+<div style="width: 400px;">
     <form id="serviceForm" action="#" method="POST">
         <div class="formSect active">
-            <h2 class="mb-3">Add new service</h2>
-            <div class="from-group">
+            
+            <div class="modal-header">
+                Add new service
+            </div>
+            <div class="from-group" style="padding: 0 30px 20px 30px">
                 <label for="name">Service name</label>
-                <div class="input-group" style="border: none">
+                <div class="input-group">
                     <input type="text" name="name" id="name" class="form-control"
                         placeholder="Enter service name...">
                 </div>
@@ -20,11 +23,13 @@
             </div>
         </div>
         <div id="serviceFormSect" class="formSect">
-            <h2 class="mb-3 text-center">Success</h2>
-            <p style="text-align: center">
+            <div class="modal-header">
+                Success
+            </div>
+            <p style="text-align: center;padding: 30px 30px 0 30px">
                 Service added successfully
             </p>
-            <div class="btns mt-3">
+            <div class="btns mt-3" style="margin: 0 30px 20px 30px">
                 <a href="#" class="std-btn"
                     onclick="openModal({'url':'{{ route('service.create') }}','modalId':'ajaxModal','method':'GET'})">Add
                     more</a>

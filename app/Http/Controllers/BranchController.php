@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBranchRequest;
 use App\Http\Requests\UpdateBranchRequest;
 use App\Models\Branch;
+use Illuminate\Http\Request;
 
 class BranchController extends Controller
 {
@@ -73,7 +74,13 @@ class BranchController extends Controller
      */
     public function update(UpdateBranchRequest $request, Branch $branch)
     {
+        $branch->update($request->validated());
+
         return response()->json('branch updated');
+    }
+
+    public function deleteBranchModal(Branch $branch) {
+        return response()->view('branches.delete-modal', compact('branch'));
     }
 
     /**
@@ -84,6 +91,8 @@ class BranchController extends Controller
      */
     public function destroy(Branch $branch)
     {
-        //
+        $branch->delete();
+        $message = 'Branch successfully deleted.';
+        return response()->view('branches.success', compact('branch','message'));
     }
 }

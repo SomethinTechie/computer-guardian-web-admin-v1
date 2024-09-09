@@ -28,12 +28,10 @@
                         <td>{{$service->status}}</td>
                         <td>{{$service->quote_requests->count()}}</td>
                         <td>
-                            <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})"
-                                class="std-btn-sm default">View</a>
-                            <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})"
-                                class="std-btn-sm default">Edit</a>
-                            <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'DELETE'})"
-                                class="std-btn-sm default">Delete</a>
+                            <a href="#" onclick="openModal({'url':'{{route('service.delete.modal',[$service->id])}}','modalId':'ajaxModal','method':'GET'})"
+                                class="std-btn-sm default"><i class="bi bi-trash"></i></a>
+                            <a href="#" onclick="openModal({'url':'{{route('service.show',[$service->id])}}','modalId':'ajaxModal','method':'GET'})"
+                                class="std-btn-sm default"><i class="bi bi-pen"></i></a>
                         </td>
                     </tr>
                 @endforeach

@@ -45,11 +45,13 @@
         </div>
         <div id="add_branch_form_sect" class="formSect">
 
-            <h2 class="mb-3 text-center">Success</h2>
+            <div class="modal-header">
+                Success
+            </div>
             <p style="text-align: center">
                 Branch added successfully
             </p>
-            <div class="btns mt-3">
+            <div class="btns mt-3" style="margin: 0 30px 20px 30px">
                 <a href="#" class="std-btn"
                     onclick="openModal({'url':'{{ route('branch.create') }}','modalId':'ajaxModal','method':'GET'})">Add
                     more</a>

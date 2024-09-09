@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
@@ -48,9 +49,11 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show($user_id)
     {
-        //
+        $customer = User::with('repairs')->where('id', $user_id)->first();
+
+        return response()->view('customers.show', compact('customer'));
     }
 
     /**

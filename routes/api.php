@@ -95,3 +95,11 @@ Route::post('/product/create', [ProductController::class, 'store']);
 Route::get('/product/{product}', [ProductController::class, 'show']);
 Route::post('/product/{product}/update', [ProductController::class, 'update']);
 Route::post('/product/{product}/delete', [ProductController::class, 'destroy']);
+
+//Products
+Route::get('/product/{product}/show', [ProductController::class, 'api_show']);
+
+
+
+
+

@@ -6,8 +6,36 @@
         <div class="right">
             Found  <strong style="padding: 0 5px"> {{ $total }} </strong> tickets
         </div>
-        <div class="left">
-            <a href="#" class="std-btn-sm default" onclick="openModal({'url':'{{route('support.create')}}','modalId':'ajaxModal','method':'GET'})">Create ticket</a>
-        </div>
+        <div class="left"></div>
+    </div>
+    <div class="scrollview mt-3">
+        @if (count($tickets) > 0)
+            <table>
+                <th>Customer</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>status</th>
+                <th style="text-align: right">Actions</th>
+
+                @foreach ($tickets as $ticket)
+                    <tr>
+                        <td>{{$ticket->user->name}}</td>
+                        <td>
+                            {{$ticket->category}}
+                        </td>
+                        <td>{{$ticket->message}}</td>
+                        <td>{{$ticket->status}}</td>
+                        <td>
+                            <a href="#" onclick="openModal({'url':'{{route('show.support',[$ticket->id])}}','modalId':'ajaxModal','method':'GET'})"
+                                class="std-btn-sm default"><i class="bi bi-eye"></i></a>
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+        @else
+            <div class="message">
+                <p>No branches added yet</p>
+            </div>
+        @endif
     </div>
 </div>

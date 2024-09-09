@@ -28,19 +28,16 @@
                         <td> {{$customer->email}} </td>
                         <td>{{ $customer->cellphone ?? 'Unavailable' }}</td>
                         <td>
-                            <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})"
-                                class="std-btn-sm default">View</a>
-                            <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})"
-                                class="std-btn-sm default">Edit</a>
-                            <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'DELETE'})"
-                                class="std-btn-sm default">Delete</a>
+                            <a href="#" onclick="getView({'url':'{{ route('customer.show',[$customer->id]) }}','view':'ajax-view'})" class="std-btn-sm default"><i class="bi bi-eye"></i></a>
+                            <!-- <a href="#" onclick="openModal({'url':'{{ route('customer.delete',[$customer->id])}}','modalId':'ajaxModal','method':'DELETE'})"
+                                class="std-btn-sm default">Delete</a> -->
                         </td>
                     </tr>
                 @endforeach
             </table>
         @else
             <div class="message">
-                <p>No branches added yet</p>
+                <p>No customers yet</p>
             </div>
         @endif
     </div>

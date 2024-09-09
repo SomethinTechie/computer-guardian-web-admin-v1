@@ -76,7 +76,7 @@ class User extends Authenticatable
         return $this->hasMany(ResidentialAddress::class);
     }
 
-    public function repair()
+    public function repairs()
     {
         return $this->hasMany(Repair::class);
     }

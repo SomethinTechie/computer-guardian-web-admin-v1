@@ -72,7 +72,12 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return response()->view('products.show', compact('product'));
+    }
+
+    public function api_show(Product $product)
+    {
+        return response()->json(['product' => $product], 200);
     }
 
     /**
@@ -98,6 +103,11 @@ class ProductController extends Controller
         //
     }
 
+    public function deleteModal(Product $product)
+    {
+        return response()->view('products.delete-modal', compact('product'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -106,6 +116,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        $message = 'Product successfully deleted';
+        return response()->view('products.success', compact('message'));
     }
 }

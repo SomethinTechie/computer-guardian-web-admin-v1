@@ -18,18 +18,16 @@
                 class="mr-2 bi bi-file-earmark-text pc"></i> Service categories</a>
         <a href="#" onclick="getView({'url':'{{ route('products.index') }}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-cart pc"></i> Products</a>
-        <a href="#" onclick="getView({'url':'{{ route('courier.index') }}','view':'ajax-view'})"><i
+        <a href="#" onclick="getView({'url':'{{ route('customers.index') }}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-people pc"></i> Customers</a>
         <a href="#" onclick="getView({'url':'{{ route('courier.index') }}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-truck pc"></i> Courier</a>
 
         <div class="nav-sect">ADMINISTRATION</div>
-        <a href="#" class=""><i class="mr-2 bi bi-person-gear pc"></i> Users</a>
-        <a href="#" class=""><i class="mr-2 bi bi-headset pc"></i> Support</a>
+        <a href="#" class="" onclick="getView({'url':'{{ route('support.index') }}','view':'ajax-view'})"><i class="mr-2 bi bi-headset pc"></i> Support</a>
 
         <div class="nav-sect">EXTRAS</div>
-        <a href="#" class=""><i class="mr-2 bi bi-easel2 pc"></i> App slides</a>
-        <a href="#" class=""><i class="mr-2 bi bi-segmented-nav pc"></i> App banner</a>
+        <a href="#" class="" onclick="getView({'url':'{{ route('banners.index') }}','view':'ajax-view'})"><i class="mr-2 bi bi-easel2 pc"></i> App banner</a>
     </div>
     <div class="main-dashboard-view">
         <div class="header space-between pbc">

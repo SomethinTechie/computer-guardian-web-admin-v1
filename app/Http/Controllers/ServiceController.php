@@ -66,7 +66,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        return response()->view('services.show', compact('service'));
     }
 
     /**
@@ -89,9 +89,16 @@ class ServiceController extends Controller
      */
     public function update(UpdateServiceRequest $request, Service $service)
     {
-        //
+        $service->update($request->validated());
+        $message = 'Service updated successfully.';
+
+        return response()->json();
     }
 
+    public function confirmDeleteModal(Service $service)
+    {
+        return response()->view('services.delete-modal', compact('service'));
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -100,6 +107,9 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+        $message = 'Service successfully deleted';
+
+        return response()->view('services.success', compact('message'));
     }
 }

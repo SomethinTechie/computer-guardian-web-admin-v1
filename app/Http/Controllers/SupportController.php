@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSupportRequest;
 use App\Http\Requests\UpdateSupportRequest;
 use App\Models\Support;
+use Illuminate\Support\Facades\Log;
 
 class SupportController extends Controller
 {
@@ -40,10 +41,22 @@ class SupportController extends Controller
      */
     public function store(StoreSupportRequest $request)
     {
+        $originalName;
+        // return response()->json($request->hasFile('image'));
+        if ($request->hasFile('image')) {
+            $originalName = $request->file('image')->getClientOriginalName();
+
+            $path = $request->file('image')->storeAs('', $originalName, 'public_uploads');
+
+            $productData['image'] = $originalName;
+        }
+
         $support = new Support();
-        $support->subject = $request->subject;
-        $support->message = $request->message;
+        $support->user_id = $request->userId;
+        $support->category = $request->serviceCategory;
+        $support->message = '$request->description';
         $support->status = 'open';
+        $support->attachment = $originalName;
         $support->save();
 
         return response()->json([
@@ -59,7 +72,8 @@ class SupportController extends Controller
      */
     public function show(Support $support)
     {
-        return response()->view('support.show', compact('support'));
+        $ticket = $support->load('user');
+        return response()->view('support.show', compact('ticket'));
     }
 
     /**

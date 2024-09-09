@@ -8,7 +8,7 @@
                 <p>{{$message}}</p>
             </div>
             <div class="btns mt-3" style="margin: 0 30px 20px 30px">
-                <a href="#" class="std-btn" onclick="getView({'url':'{{route('branch.index')}}','view':'ajax-view','modalId':'ajaxModal'})">Done</a>
+                <a href="#" class="std-btn" onclick="getView({'url':'/admin/services','view':'ajax-view','modalId':'ajaxModal'})">Done</a>
             </div>
         </div>
     </form>
