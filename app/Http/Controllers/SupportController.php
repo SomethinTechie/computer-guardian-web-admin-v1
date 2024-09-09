@@ -42,7 +42,7 @@ class SupportController extends Controller
     public function store(StoreSupportRequest $request)
     {
         $originalName;
-        // return response()->json($request->hasFile('image'));
+
         if ($request->hasFile('image')) {
             $originalName = $request->file('image')->getClientOriginalName();
 
@@ -54,7 +54,7 @@ class SupportController extends Controller
         $support = new Support();
         $support->user_id = $request->userId;
         $support->category = $request->serviceCategory;
-        $support->message = '$request->description';
+        $support->message = $request->message;
         $support->status = 'open';
         $support->attachment = $originalName;
         $support->save();
