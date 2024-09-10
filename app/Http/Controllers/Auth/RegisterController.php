@@ -78,7 +78,7 @@ class RegisterController extends Controller
 
     public function registerUser(UserStoreRequest $request)
     {
-        $user = $this->create($request->all());
+        $user = $this->create($request->validated());
 
         return response()->json(['data' => $user, 'success' => 'User created successfully'], 200);
     }

@@ -50,7 +50,6 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        //find or create new thread where user_id = $request->user_id
         $thread = Thread::firstOrCreate([
             'user_id' => $request->user_id,
         ]);

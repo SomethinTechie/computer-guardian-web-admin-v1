@@ -41,12 +41,12 @@ class SupportController extends Controller
      */
     public function store(StoreSupportRequest $request)
     {
-        $originalName;
+        $originalName = '';
 
         if ($request->hasFile('image')) {
             $originalName = $request->file('image')->getClientOriginalName();
 
-            $path = $request->file('image')->storeAs('', $originalName, 'public_uploads');
+            $path = $request->file('image')->storeAs('', $originalName, 'support_uploads');
 
             $productData['image'] = $originalName;
         }

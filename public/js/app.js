@@ -581,3 +581,41 @@ function filterByDate() {
         getView({ url: "/campaign?order=asc", view: "ajax-view" });
     }
 }
+
+function postReply(req) {
+    const reply = document.getElementById("replyText").value;
+    const chatbox = document.getElementById("chat");
+    console.log(req);
+
+    // Get CSRF token from meta tag or other sources
+    const csrfToken = document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content");
+
+    $.ajax({
+        url: "/chats/reply",
+        method: "POST",
+        data: {
+            message: reply,
+            thread_id: req.thread_id,
+            user_id: req.user_id,
+        },
+        headers: {
+            "X-CSRF-TOKEN": csrfToken,
+        },
+        success: function (res) {
+            const li = document.createElement("li");
+
+            const span = document.createElement("span");
+
+            span.textContent = res.message;
+
+            li.appendChild(span);
+
+            chatbox.appendChild(li);
+        },
+        error: function (err) {
+            console.error("Error:", err);
+        },
+    });
+}

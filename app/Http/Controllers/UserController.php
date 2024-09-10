@@ -13,20 +13,24 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->cellphone = $request->mobileNumber;
+        $user->cellphone = $request->mobileNumber ?? '0';
         $user->save();
 
         //find or create ResidentialAddress
         $residentialAddress = ResidentialAddress::where('user_id', $user->id)->first();
+
         if (!$residentialAddress) {
             $residentialAddress = new ResidentialAddress();
             $residentialAddress->user_id = $user->id;
         }
-        $residentialAddress->street = $request->address['street'];
-        $residentialAddress->city = $request->address['city'];
-        $residentialAddress->state = $request->address['state'];
-        $residentialAddress->zip_code = $request->address['zip'];
+
+        $residentialAddress->street = $request->address['street'] ?? '';
+        $residentialAddress->city = $request->address['city'] ?? '';
+        $residentialAddress->state = $request->address['state'] ?? '';
+        $residentialAddress->zip_code = $request->address['zip'] ?? '';
         $residentialAddress->save();
+
+        $user->load('user_address');
 
         return response()->json(['success' => 'success', 'user' => $user]);
     }

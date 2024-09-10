@@ -14,6 +14,7 @@ use App\Http\Controllers\SupportController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -155,6 +156,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/banners/{banner}/show', [BannerController::class, 'show'])->name('banner.show');
     Route::get('/banners/{banner}/update', [BannerController::class, 'update'])->name('banner.update');
     Route::get('/banners/{banner}/delete', [BannerController::class, 'destroy'])->name('banner.delete');
+
+    //index
+    Route::get('/chats', [ChatController::class, 'index'])->name('chats.index');
+    Route::get('/chats/{chat}/show', [ChatController::class, 'show'])->name('chats.show');
+    Route::post('/chats/reply', [ChatController::class, 'store'])->name('chats.reply');
 
 });
 
