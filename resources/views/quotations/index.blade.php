@@ -37,8 +37,6 @@
                         <td>
                             <a href="#" onclick="getView({'url':'{{route('quote.show',[$quote->id])}}','view':'ajax-view'})"
                                 class="std-btn-sm default">View</a>
-                            <a href="#" onclick="openModal({'url':'###','modalId':'ajaxModal','method':'GET'})"
-                                class="std-btn-sm default">Edit</a>
                         </td>
                     </tr>
                 @endforeach
