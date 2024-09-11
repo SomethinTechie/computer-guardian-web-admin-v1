@@ -20,9 +20,18 @@ class QuoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $quotes = QuoteRequest::orderBy('created_at', 'desc')->get();
+        $user_id = $request->get('user_id');
+
+        $quotes = QuoteRequest::where('user_id', $user_id)
+            ->orderBy('created_at', 'desc')
+            ->with('service')
+            ->get();
+
+        if ($quotes->isEmpty()) {
+            return response()->json(['message' => 'No quotes found for this user.'], 404);
+        }
 
         // $total = Quote::count();
 
@@ -61,41 +70,27 @@ class QuoteController extends Controller
      */
     public function store(StoreQuoteRequest $request)
     {
-        $is_dropoff = 'yes';
+        $is_dropoff = $request->isRequestingCollection === 'Yes' ? 'no' : 'yes';
+
         $service = Service::where('name', $request->serviceCategory)->first();
 
-        if ($request->isRequestingCollection == 'Yes') {
-            $is_dropoff = 'no';
-            // $request->validate([
-            //     'pickup' => 'required',
-            //     'pickup_date' => 'required',
-            //     'pickup_time' => 'required',
-            // ]);
+        if (!$service) {
+            return response()->json(['error' => 'Service not found'], 404);
         }
 
-        $quote = QuoteRequest::create([
-            'user_id' => $request->user_id,
-            'device' => $request->deviceType,
-            'service_id' => $service->id,
-            'description' => $request->serviceDescription,
-            'make' => $request->laptopMake,
-            'model' => $request->laptopModel,
-            'processor' => $request->processor,
-            'ram' => $request->ram,
-            'storage' => $request->storage,
-            'is_collection' => $request->is_collection,
-            'is_dropoff' => $is_dropoff,
-            'status' => 'pending',
-            'pickup' => $request->pickup,
-            'pickup_date' => $request->pickup_date,
-            'pickup_time' => $request->pickup_time,
-            'is_collection' => $request->isRequestingCollection,
-        ]);
+        $quote = new QuoteRequest();
+        $quote->service_id = $service->id;
+        $quote->is_dropoff = $is_dropoff;
+
+        $quote->fill($request->validated());
+
+        $quote->save();
 
         return response()->json([
             'quote' => $quote,
         ], 201);
     }
+
 
     /**
      * Display the specified resource.
@@ -106,6 +101,8 @@ class QuoteController extends Controller
     public function show(Request $request)
     {
         $quote = QuoteRequest::find($request->route('quote'));
+        $quote->load('service');
+
         return response()->json([
             'quote' => $quote,
         ], 200);

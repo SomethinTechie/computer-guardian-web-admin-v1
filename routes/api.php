@@ -37,7 +37,7 @@ Route::post('/auth/login/user', [RegisterController::class, 'loginUser']);
 
 //Quotes
 Route::get('/quotes', [QuoteController::class, 'index']);
-Route::post('/quote/create/{user}', [QuoteController::class, 'store']);
+Route::post('/quote/create', [QuoteController::class, 'store']);
 Route::get('/quote/{quote}', [QuoteController::class, 'show']);
 
 //user
