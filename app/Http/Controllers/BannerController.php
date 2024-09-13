@@ -69,7 +69,7 @@ class BannerController extends Controller
      */
     public function show(Banner $banner)
     {
-        return response()->view('banners.show', compact($banner));
+        return response()->view('banners.show', compact('banner'));
     }
 
     /**
@@ -92,9 +92,27 @@ class BannerController extends Controller
      */
     public function update(UpdateBannerRequest $request, Banner $banner)
     {
-        $banner = Banner::update($request->validated());
-        return response()->view('banners.success');
+        $bannerData = $request->validated();
+
+        // Check if the request contains a file for 'image'
+        if ($request->hasFile('image')) {
+            $originalName = $request->file('image')->getClientOriginalName();
+            
+            // Store the file in the 'banners_uploads' disk
+            $path = $request->file('image')->storeAs('', $originalName, 'banners_uploads');
+            
+            // Save the original file name in the 'image' field
+            $bannerData['image'] = $originalName;
+        }
+
+        // Update the banner with the validated data
+        $banner->update($bannerData);
+        $message = '';
+
+        // Return the success view or redirect as needed
+        return response()->json('Banner updated successfully.');
     }
+
 
     public function deleteModal(Banner $banner)
     {

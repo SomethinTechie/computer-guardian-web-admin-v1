@@ -613,6 +613,7 @@ function postReply(req) {
             li.appendChild(span);
 
             chatbox.appendChild(li);
+            document.getElementById("replyText").value = "";
         },
         error: function (err) {
             console.error("Error:", err);

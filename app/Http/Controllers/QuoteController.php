@@ -150,12 +150,16 @@ class QuoteController extends Controller
 
     public function formData()
     {
+        $user_id = $request->get('user_id');
+
         $services = Service::all();
         $branches = Branch::all();
+        $tickets = Support::where('id', $user_id)->first();
 
         return response()->json([
             'services' => $services,
             'branches' => $branches,
+            'tickets' => $titckets,
         ]);
 
         return response()->json([
