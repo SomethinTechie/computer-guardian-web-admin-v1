@@ -19,7 +19,7 @@
                     <img src="{{asset('banners/' . $banner->image)}}" alt="" style="width: 400px">
                     <div class="listItem space-between">
                         {{$banner->name}}
-                        <a href="#" onclick="openModal({'url':'','modalId':'ajaxModal','method':'GET'})"
+                        <a href="#" onclick="openModal({'url':'{{route('banner.delete.modal',[$banner->id])}}','modalId':'ajaxModal','method':'GET'})"
                                 class="std-btn-sm default"><i class="bi bi-trash"></i></a>
                     </div>
                     <div class="listItem" style="border-bottom: none">{{$banner->caption}}</div>

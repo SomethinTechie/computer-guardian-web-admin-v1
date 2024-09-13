@@ -11,6 +11,7 @@ use App\Http\Controllers\SupportController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BannerController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -98,6 +99,9 @@ Route::post('/product/{product}/delete', [ProductController::class, 'destroy']);
 
 //Products
 Route::get('/product/{product}/show', [ProductController::class, 'api_show']);
+
+//banners
+Route::get('/banners', [BannerController::class, 'api_index']);
 
 
 

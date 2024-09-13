@@ -20,6 +20,14 @@ class BannerController extends Controller
         return response()->view('banners.index', compact('banners','total'));
     }
 
+
+    public function api_index()
+    {
+        $banners = Banner::all();
+        $total = $banners->count();
+        return response()->json($banners, 200);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -90,7 +98,7 @@ class BannerController extends Controller
 
     public function deleteModal(Banner $banner)
     {
-        return response()->view('banner.delete-modal', compact('banner'));
+        return response()->view('banners.delete-modal', compact('banner'));
     }
 
     /**

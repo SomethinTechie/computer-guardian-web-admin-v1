@@ -154,7 +154,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/banners/create', [BannerController::class, 'create'])->name('banner.create');
     Route::post('/banners/store', [BannerController::class, 'store'])->name('banner.store');
     Route::get('/banners/{banner}/show', [BannerController::class, 'show'])->name('banner.show');
-    Route::get('/banners/{banner}/update', [BannerController::class, 'update'])->name('banner.update');
+    Route::get('/banners/{banner}/show', [BannerController::class, 'show'])->name('banner.show');
+    Route::get('/banners/{banner}/delete-modal', [BannerController::class, 'deleteModal'])->name('banner.delete.modal');
     Route::get('/banners/{banner}/delete', [BannerController::class, 'destroy'])->name('banner.delete');
 
     //index
