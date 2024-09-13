@@ -153,8 +153,6 @@ class QuoteController extends Controller
     {
         $user_id = $request->get('user_id');
 
-        return response()->json($request->get('user_id'));
-
         $services = Service::all();
         $branches = Branch::all();
         $tickets = Support::where('id', $user_id)->first();
