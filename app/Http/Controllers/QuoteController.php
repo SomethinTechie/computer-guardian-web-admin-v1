@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Quote;
 use App\Models\QuoteRequest;
 use App\Models\Service;
+use App\Models\Support;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Repair;
@@ -148,9 +149,11 @@ class QuoteController extends Controller
         //
     }
 
-    public function formData()
+    public function formData(Request $request)
     {
         $user_id = $request->get('user_id');
+
+        return response()->json($request->get('user_id'));
 
         $services = Service::all();
         $branches = Branch::all();
@@ -159,7 +162,7 @@ class QuoteController extends Controller
         return response()->json([
             'services' => $services,
             'branches' => $branches,
-            'tickets' => $titckets,
+            'tickets' => $tickets,
         ]);
 
         return response()->json([
