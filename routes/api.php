@@ -71,7 +71,7 @@ Route::post('/message/{message}/delete', [MessageController::class, 'destroy']);
 //supports
 Route::get('/supports', [SupportController::class, 'index']);
 Route::post('/support/create', [SupportController::class, 'store']);
-Route::get('/support/{support}', [SupportController::class, 'show']);
+Route::get('/support/{support}', [SupportController::class, 'api_show']);
 Route::post('/support/{support}/update', [SupportController::class, 'update']);
 Route::post('/support/{support}/delete', [SupportController::class, 'destroy']);
 

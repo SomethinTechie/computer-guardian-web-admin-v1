@@ -15,7 +15,14 @@
         </div>
         <div class="listItem"><span style="width: 150px">Category:</span> {{$ticket->category}}</div>
         <div class="listItem"><span style="width: 150px">Description:</span> {{$ticket->message}}</div>
-        <div class="listItem" style="border-bottom: none"><span style="width: 150px">Status:</span> {{$ticket->status}}</div>
+        <div class="listItem" style="border-bottom: none">
+            <span style="width: 150px">Status:</span>
+            <select id="" name="status" id="" onchange="updateSupportTicketStatus({'url':'{{route('ticket.update.status',[$ticket->id])}}','status': this.value})">
+                <option value="{{$ticket->status}}">{{$ticket->status}}</option>
+                <option value="resolving">resolving</option>
+                <option value="closed">closed</option>
+            </select>
+        </div>
 
         <div class="header space-between no-borders" style="padding: 20px 0 0 0">
             <h6>Ticket image</h6>

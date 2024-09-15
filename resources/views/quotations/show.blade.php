@@ -2,7 +2,7 @@
     <h3>
         Quote request
         @if($quote->status === 'pending' || $quote->status === 'Pending')
-            <a href="#" class="std-btn-sm default" onclick="openModal({'url':'{{route('quote.approve',[$quote->id])}}','modalId':'approveQuote','method':'GET'})">Approve quotation</a>
+            <a href="#" class="std-btn-sm default" onclick="openModal({'url':'{{route('quote.approve.modal',[$quote->id])}}','modalId':'ajaxModal','method':'GET'})">Approve quotation</a>
         @else
             <a href="#" class="std-btn-sm default">Approved</a>
         @endif

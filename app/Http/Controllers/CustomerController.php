@@ -62,9 +62,9 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit(User $customer)
     {
-        //
+        return response()->view('customers.edit', compact('customer'));
     }
 
     /**
@@ -74,9 +74,16 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCustomerRequest $request, Customer $customer)
+    public function update(UpdateCustomerRequest $request, User $customer)
     {
-        //
+        $customer->update($request->validated());
+
+        return response()->json('cutomer addited successfully');
+    }
+
+    public function deleteModal(User $customer)
+    {
+        return response()->view('customers.delete-modal', compact('customer'));
     }
 
     /**
@@ -85,8 +92,26 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy(User $customer)
     {
-        //
+        $customer->delete();
+        
+        $message = 'Customer deleted successfully';
+
+        return response()->view('customers.success',compact('message'));
     }
+
+   public function search(Request $request, $searchTerm)
+    {
+        // Perform the search query on the 'name' field using the route parameter
+        $customers = User::where('name', 'like', '%' . $searchTerm . '%')->get();
+
+        // Get the total count of results
+        $total = $customers->count();
+
+        // Return the results to the view
+        return response()->view('customers.search-results', compact('customers', 'total'));
+    }
+
+
 }

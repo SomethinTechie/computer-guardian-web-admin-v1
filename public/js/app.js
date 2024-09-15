@@ -545,7 +545,7 @@ document
         let search = document.getElementById("globalSearch");
         let formId = "globalSearchForm";
         let view = "ajax-view";
-        let url = `/campaign/search/${search.value}`;
+        let url = `/customer/search/${search.value}`;
         let method = "GET";
         console.log(search.value);
 
@@ -617,6 +617,22 @@ function postReply(req) {
         },
         error: function (err) {
             console.error("Error:", err);
+        },
+    });
+}
+
+function updateSupportTicketStatus(req) {
+    const status = window.event.target.value;
+    var url = req.url;
+    url += `?status=${req.status}`;
+
+    console.log(url);
+
+    $.ajax({
+        url: url,
+        type: "GET",
+        success: function (res) {
+            console.log(res);
         },
     });
 }

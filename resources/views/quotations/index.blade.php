@@ -7,11 +7,7 @@
         <div class="right">
             Found <strong style="padding: 0 5px"> {{ $total }} </strong> quatations
         </div>
-        <div class="left">
-            <a href="#"
-                onclick="openModal({'url':'{{ route('quote.create') }}','modalId':'ajaxModal','method':'GET'})"
-                class="std-btn-sm default">Create quotation</a>
-        </div>
+        <div class="left"></div>
     </div>
 
     <div class="scrollview mt-3">

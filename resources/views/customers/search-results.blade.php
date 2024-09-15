@@ -1,6 +1,5 @@
 <div class="header space-between no-borders std-padding">
     <h5>Customers</h5>
-
 </div>
 <div class="col-md-12 std-padding-x">
     <div class="message" style="background: #eee;border-radius: 6px;border: solid .1px #ddd;padding: 10px 10px 10px 18px">
@@ -37,7 +36,7 @@
             </table>
         @else
             <div class="message">
-                <p>No customers yet</p>
+                <p>No customers found matching the name.</p>
             </div>
         @endif
     </div>

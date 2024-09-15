@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSupportRequest;
 use App\Http\Requests\UpdateSupportRequest;
 use App\Models\Support;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class SupportController extends Controller
@@ -76,6 +77,12 @@ class SupportController extends Controller
         return response()->view('support.show', compact('ticket'));
     }
 
+    public function api_show(Support $support)
+    {
+        $ticket = $support->load('user');
+        return response()->json(['ticket' => $ticket]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -113,6 +120,12 @@ class SupportController extends Controller
         return response()->json([
             'support' => $support,
         ], 200);
+    }
+
+    public function update_status(Support $support, Request $request)
+    {
+        $support->status = $request->get('status');
+        $support->save();
     }
 
     /**

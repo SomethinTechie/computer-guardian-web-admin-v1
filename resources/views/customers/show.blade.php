@@ -1,11 +1,11 @@
 <div class="header space-between no-borders std-padding" style="padding-bottom: 0">
-    <h5>Customer</h5>
+    <h5>Customer #C{{$customer->id}}</h5>
 </div>
 <div class="col-md-12 std-padding-x">
     <div class="scrollview mt-3">
         <div class="listItem"><span style="width: 150px">Name:</span> {{$customer->name}}</div>
         <div class="listItem"><span style="width: 150px">Email address:</span> {{$customer->email}}</div>
-        <div class="listItem"><span style="width: 150px">Phone number:</span> {{$customer->phone}}</div>
+        <div class="listItem"><span style="width: 150px">Phone number:</span> {{$customer->cellphone ?? 'unavailable'}}</div>
 
         <div class="header space-between no-borders" style="padding: 20px 0 0 0">
             <h6>Repairs</h6>

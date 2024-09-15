@@ -17,11 +17,13 @@ class RepairController extends Controller
      */
     public function index(Request $request)
     {
-        // return response()->json($request->get('status'));
-        $status = $request->get('status');
-        $repairs = Repair::with('quoteRequest','user')
-        ->where('status', $status)
-        ->get();
+        $status = $request->get('status', 'Booked');
+
+        // return response()->json($status);
+
+        $repairs = Repair::with(['quoteRequest', 'user'])
+            ->where('status', $status)
+            ->get();
 
         $total = Repair::where('status', $status)->count();
 

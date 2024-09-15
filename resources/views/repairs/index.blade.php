@@ -10,15 +10,14 @@
         <div class="right">
             <select onchange="getView({'url':'{{ route('repair.index') }}','view':'ajax-view','filter':this.value})" name="status" id="" class="std-btn-sm default" style="font-size: 14px;padding: 0 10px;height: 32px!important;float: left;border: none;margin-right: 20px">
                 <option value="">{{$status}}</option>
-                <option value="booked">Booked</option>
-                <option value="collected">Collected</option>
-                <option value="check-in">Check-in</option>
-                <option value="diagnosis">Diagnosis</option>
-                <option value="reparing">Reparing</option>
-                <option value="invocing">Invocing</option>
-                <option value="returning/Awaiting collection">Returning/Awaiting collection</option>
-                <option value="completed">Completed</option>
-                <option value="rating">Rating</option>
+                <option value="Booked">Booked</option>
+                <option value="Collected">Collected</option>
+                <option value="Check-in">Check-in</option>
+                <option value="Diagnosis">Diagnosis</option>
+                <option value="Repairing">Repairing</option>
+                <option value="Invoicing">Invoicing</option>
+                <option value="Returning/Awaiting collection">Returning/Awaiting collection</option>
+                <option value="Completed">Completed</option>
             </select>
         </div>
     </div>

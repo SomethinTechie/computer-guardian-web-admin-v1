@@ -7,7 +7,7 @@
         </form>
         <div class="btns" style="margin: 20px">
             <a href="#" class="std-btn" onclick="closeModal({'modalId':'approveQuote'})">Cancel</a>
-            <a href="#" class="std-btn" onclick="getView({'url':'{{ route('quote.approve',[$quote->id]) }}','view':'ajax-view','modalId':'ajaxModal'})">Continue</a>
+            <a href="#" class="std-btn" onclick="openModal({'url':'{{route('quote.approve',[$quote->id])}}','modalId':'ajaxModal','method':'GET'})">Continue</a>
         </div>
     </div>
     <div id="quoteApprovalSuccess" class="formSect">

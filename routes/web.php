@@ -91,6 +91,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/support/{support}', [SupportController::class, 'show'])->name('show.support');
     Route::post('/support/{support}/update', [SupportController::class, 'update'])->name('update.support');
     Route::post('/support/{support}/delete', [SupportController::class, 'destroy'])->name('delete.support');
+    Route::get('/support/{support}/update', [SupportController::class, 'update_status'])->name('ticket.update.status');
 
 //threads
     Route::get('/threads', [ThreadController::class, 'index'])->name('thread.index');
@@ -116,9 +117,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/customers/{user_id}', [App\Http\Controllers\CustomerController::class, 'user_index']);
     Route::post('/customer/create', [App\Http\Controllers\CustomerController::class, 'store'])->name('customer.create');
     Route::get('/customer/{user_id}', [App\Http\Controllers\CustomerController::class, 'show'])->name('customer.show');
+    Route::get('/customer/{customer}/edit', [App\Http\Controllers\CustomerController::class, 'edit'])->name('customer.edit');
     Route::post('/customer/{customer}/update', [App\Http\Controllers\CustomerController::class, 'update'])->name('customer.update');
-    Route::post('/customer/{customer}/delete', [App\Http\Controllers\CustomerController::class, 'destroy'])->name('customer.delete');
+    Route::get('/customer/{customer}/delete', [App\Http\Controllers\CustomerController::class, 'destroy'])->name('customer.delete');
     Route::get('/customer/show/{user_id}', [CustomerController::class, 'show'])->name('show.customer');
+    Route::get('/customer/{customer}/delete-mdoal', [CustomerController::class, 'deleteModal'])->name('customer.delete.modal');
+    Route::get('/customer/search/{searchTerm}', [CustomerController::class, 'search'])->name('customer.search');
 
     //Courier
     Route::get('/courier', [CourierController::class, 'index'])->name('courier.index');

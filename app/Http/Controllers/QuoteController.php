@@ -155,7 +155,7 @@ class QuoteController extends Controller
 
         $services = Service::all();
         $branches = Branch::all();
-        $tickets = Support::where('id', $user_id)->first();
+        $tickets = Support::where('user_id', $user_id)->get();
 
         return response()->json([
             'services' => $services,
@@ -188,8 +188,9 @@ class QuoteController extends Controller
             'description' => $quote->description,
         ]);
 
-        $quote = QuoteRequest::find($request->route('quote'));
-        return response()->view('quotations.show', compact('quote'));
+        $message = 'Quote successfully approved and added to booked repairs.';
+
+        return response()->view('quotations.modals.success', compact('quote','message'));
 
     }
 }

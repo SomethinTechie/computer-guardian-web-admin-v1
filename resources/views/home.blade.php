@@ -10,7 +10,7 @@
                 class="mr-2 bi bi-house pc"></i> Overview</a>
         <a href="#" onclick="getView({'url':'{{ route('quote.index') }}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-layers pc"></i> Quotations</a>
-        <a href="#" onclick="getView({'url':'{{ route('repair.index',['status' => 'pending']) }}','view':'ajax-view'})"><i
+        <a href="#" onclick="getView({'url':'{{ route('repair.index',['status' => 'booked']) }}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-tools pc"></i> Repairs</a>
         <a href="#" onclick="getView({'url':'{{ route('branch.index') }}','view':'ajax-view'})"><i
                 class="mr-2 bi bi-bank pc"></i> Branches</a>
@@ -34,7 +34,7 @@
         <div class="header space-between pbc">
             <form id="globalSearchForm" action="#" class="search-form col-md-4">
                 <i class="bi bi-search mr-2"></i><input type="text" id="globalSearch"
-                    placeholder="Search for  parcel or customer..." style="width: calc(100% - 50px);">
+                    placeholder="Search customer..." style="width: calc(100% - 50px);">
             </form>
             <div class="right">
                 <!-- <span class="">{{ Auth::user()->name }}</span> -->
