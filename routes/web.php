@@ -83,6 +83,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/message/{message}', [MessageController::class, 'show'])->name('message.show');
     Route::post('/message/{message}/update', [MessageController::class, 'update'])->name('message.update');
     Route::post('/message/{message}/delete', [MessageController::class, 'destroy'])->name('message.delete');
+    Route::get('/message/{thread}/confirm-clear', [MessageController::class, 'confirmClearChat'])->name('confirm.clear.chat');
+    Route::get('/message/{thread}/clear', [MessageController::class, 'clearChat'])->name('clear.chat');
 
 //supports
     Route::get('/supports', [SupportController::class, 'index'])->name('support.index');

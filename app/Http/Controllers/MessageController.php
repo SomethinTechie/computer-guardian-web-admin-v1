@@ -103,6 +103,24 @@ class MessageController extends Controller
         //
     }
 
+    public function confirmClearChat(Thread $thread)
+    {
+        return response()->view('chats.confirm-delete', compact('thread'));
+    }
+
+    public function clearChat(Thread $thread)
+    {
+        // Delete all messages associated with the thread in a single query
+        $thread->messages()->delete();
+
+        // Set success message
+        $message = 'Chat successfully cleared.';
+
+        // Return the view with the thread and message variables
+        return response()->view('chats.success', compact('thread', 'message'));
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *

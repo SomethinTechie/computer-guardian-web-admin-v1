@@ -17,17 +17,21 @@
                 <th style="text-align: right">Actions</th>
 
                 @foreach ($chats as $chat)
-                    <tr>
-                        <td>{{$chat->user->name}}</td>
-                        <td>
-                            {{$chat->messages->count()}}
-                        </td>
-                        <td>{{$chat->messages[0]->updated_at}}</td>
-                        <td>
-                            <a href="#" onclick="openModal({'url':'{{route('chats.show',[$chat->id])}}','modalId':'ajaxModal','method':'GET'})"
-                                class="std-btn-sm default"><i class="bi bi-eye"></i></a>
-                        </td>
-                    </tr>
+                    @if($chat->user)
+                        <tr>
+                            <td>{{$chat->user->name}}</td>
+                            <td>
+                                {{$chat->messages->count()}}
+                            </td>
+                            <td>{{$chat->messages[0]->updated_at ?? $chat->updated_at}}</td>
+                            <td>
+                                <a href="#" onclick="openModal({'url':'{{route('chats.show',[$chat->id])}}','modalId':'ajaxModal','method':'GET'})"
+                                    class="std-btn-sm default"><i class="bi bi-eye"></i></a>
+                                <a href="#" onclick="openModal({'url':'{{route('confirm.clear.chat',[$chat->id])}}','modalId':'ajaxModal','method':'GET'})"
+                                    class="std-btn-sm default">Clear chat</a>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
             </table>
         @else
