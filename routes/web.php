@@ -161,7 +161,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/banners/store', [BannerController::class, 'store'])->name('banner.store');
     Route::get('/banners/{banner}/show', [BannerController::class, 'show'])->name('banner.show');
     Route::post('/banners/{banner}/update', [BannerController::class, 'update'])->name('banner.update');
-    Route::post('/banners/{banner}/delete-modal', [BannerController::class, 'deleteModal'])->name('banner.delete.modal');
+    Route::get('/banners/{banner}/delete-modal', [BannerController::class, 'deleteModal'])->name('banner.delete.modal');
     Route::get('/banners/{banner}/delete', [BannerController::class, 'destroy'])->name('banner.delete');
 
     //index
