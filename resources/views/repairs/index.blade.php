@@ -29,6 +29,7 @@
                 <th>Status</th>
                 <th>Date booked</th>
                 <th>Customer name</th>
+                <th>Customer number</th>
                 <th>Email</th>
                 <th style="text-align: right">Actions</th>
 
@@ -40,6 +41,7 @@
                         <td>{{$repair->status}}</td>
                         <td>{{$repair->created_at}}</td>
                         <td>{{$repair->quoteRequest->user->name}}</td>
+                        <td>{{$repair->quoteRequest->user->customer_number}}</td>
                         <td>{{$repair->quoteRequest->user->email}}</td>
                         <td>
                             <a href="#" onclick="openModal({'url':'{{route('qr.code',[$repair->id])}}','modalId':'ajaxModal','method':'GET'})"

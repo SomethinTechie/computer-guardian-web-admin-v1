@@ -636,3 +636,18 @@ function updateSupportTicketStatus(req) {
         },
     });
 }
+
+function handlePrint() {
+    var printbtns = document.getElementById("printBtns");
+    try {
+        printbtns.style.display = "none";
+        window.print();
+    } catch (error) {
+        console.error("Error occurred during print operation:", error);
+    }
+}
+window.onafterprint = function () {
+    var printbtns = document.getElementById("printBtns");
+    console.log("Print dialog closed");
+    printbtns.style.display = "flex";
+};

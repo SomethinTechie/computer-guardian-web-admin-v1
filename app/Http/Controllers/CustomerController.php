@@ -16,9 +16,11 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = User::orderBy('created_at', 'desc')->paginate(10);
+        $customers = User::orderBy('created_at', 'desc')
+        ->where('role', 'Normal')
+        ->paginate(10);
 
-        $total = User::all()->count();
+        $total = $customers->count();
         return response()->view('customers.index', compact('customers', 'total'));
     }
 
@@ -40,7 +42,16 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
-        //
+        $data = $request->validated();
+        $data['password'] = Hash::make($data['password']);
+
+
+        $user = User::create($data);
+        $user->customer_number = 'CG00' . $user->id;
+        $user->save();
+
+
+        return response()->json('user created successfully');
     }
 
     /**

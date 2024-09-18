@@ -1,6 +1,6 @@
 <div class="formSect active" style="width: 400px">
     <div class="modal-header bb1">
-        <strong>ADD CUSTOMER</strong>
+        <strong>ADD USER</strong>
     </div>
     <form id="newUserForm" action="#" style="padding: 20px 30px;">
         @csrf
@@ -28,7 +28,7 @@
         </div>
         <div class="error" data-name="cellphone"></div>
 
-        <input type="hidden" value="Normal" name="role">
+        <input type="hidden" value="Admin" name="role">
 
         <div class="form-group">
             <label for="name">Temporary password</label>
@@ -39,7 +39,7 @@
         <div class="error" data-name="password"></div>
     </form>
     <div class="btns" style="margin: 0 30px 20px 30px">
-        <a href="#" class="std-btn default" onclick="submitForm({'url':'{{ route('admin.user.store') }}','formId':'newUserForm','method':'POST','modalSect':'add_branch_form_sect','resView':'ajaxView'})">ADD CUSTOMER</a>
+        <a href="#" class="std-btn default" onclick="submitForm({'url':'{{ route('admin.user.store') }}','formId':'newUserForm','method':'POST','modalSect':'add_branch_form_sect','resView':'ajaxView'})">ADD USER</a>
         <a href="#" class="std-btn default" onclick="closeModal({'modalId':'ajaxModal'})">Cancel</a>
     </div>
 </div>
@@ -49,11 +49,11 @@
         Success
     </div>
     <p style="text-align: center">
-        Customer created successfully.
+        User created successfully.
     </p>
     <div class="btns mt-3" style="margin: 0 30px 20px 30px">
         <a href="#" class="std-btn"
-            onclick="openModal({'url':'{{ route('customer.create') }}','modalId':'ajaxModal','method':'GET'})">Add
+            onclick="openModal({'url':'{{ route('admin.user.create') }}','modalId':'ajaxModal','method':'GET'})">Add
             more</a>
         <a href="#" class="std-btn" onclick="getView({'url':'{{route('admin.users')}}','view':'ajax-view','modalId':'ajaxModal'})">Done</a>
     </div>

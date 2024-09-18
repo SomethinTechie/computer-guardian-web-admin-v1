@@ -117,7 +117,8 @@ Route::middleware(['auth'])->group(function () {
 //customers
     Route::get('/customers', [App\Http\Controllers\CustomerController::class, 'index'])->name('customers.index');
     Route::get('/customers/{user_id}', [App\Http\Controllers\CustomerController::class, 'user_index']);
-    Route::post('/customer/create', [App\Http\Controllers\CustomerController::class, 'store'])->name('customer.create');
+    Route::post('/customer/create', [App\Http\Controllers\CustomerController::class, 'store'])->name('customer.store');
+    Route::get('/customer/create', [App\Http\Controllers\CustomerController::class, 'create'])->name('customer.create');
     Route::get('/customer/{user_id}', [App\Http\Controllers\CustomerController::class, 'show'])->name('customer.show');
     Route::get('/customer/{customer}/edit', [App\Http\Controllers\CustomerController::class, 'edit'])->name('customer.edit');
     Route::post('/customer/{customer}/update', [App\Http\Controllers\CustomerController::class, 'update'])->name('customer.update');
@@ -168,6 +169,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/chats', [ChatController::class, 'index'])->name('chats.index');
     Route::get('/chats/{chat}/show', [ChatController::class, 'show'])->name('chats.show');
     Route::post('/chats/reply', [ChatController::class, 'store'])->name('chats.reply');
+
+    //users
+    Route::get('/admin/users', [UserController::class, 'users'])->name('admin.users');
+    Route::get('/admin/user/create', [UserController::class, 'create'])->name('admin.user.create');
+    Route::post('/admin/user/store', [UserController::class, 'store'])->name('admin.user.store');
+    Route::get('/admin/{user}/show', [UserController::class, 'show'])->name('admin.user.show');
+    Route::get('/admin/{user}/update', [UserController::class, 'update'])->name('admin.user.update');
+    Route::get('/admin/{user}/delete-modal', [UserController::class, 'deleteModal'])->name('admin.user.delete.modal');
 
 });
 

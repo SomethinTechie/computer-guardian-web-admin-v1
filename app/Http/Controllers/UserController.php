@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\ResidentialAddress;
 use App\Models\User;
+use App\Http\Requests\UserStoreRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -34,4 +36,31 @@ class UserController extends Controller
 
         return response()->json(['success' => 'success', 'user' => $user]);
     }
+
+    public function users() {
+        $users = User::where("role", 'Admin')
+        ->orWhere('role', 'Super admin')
+        ->get();
+        $total = $users->count();
+
+        return response()->view('admin.users', compact('users','total'));
+    }
+
+    public function create(Request $request) {
+        return response()->view('admin.create');
+    }
+
+    public function store(UserStoreRequest $request) {
+        $data = $request->validated();
+        $data['password'] = Hash::make($data['password']);
+
+
+        $user = User::create($data);
+        $user->customer_number = 'CG00' . $user->id;
+        $user->save();
+
+
+        return response()->json('user created successfully');
+    }
+
 }

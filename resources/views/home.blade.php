@@ -24,6 +24,7 @@
                 class="mr-2 bi bi-truck pc"></i> Courier</a>
 
         <div class="nav-sect">ADMINISTRATION</div>
+        <a href="#" class="" onclick="getView({'url':'{{ route('admin.users') }}','view':'ajax-view'})"><i class="mr-2 bi bi-people pc"></i> Users</a>
         <a href="#" class="" onclick="getView({'url':'{{ route('support.index') }}','view':'ajax-view'})"><i class="mr-2 bi bi-headset pc"></i> Support</a>
         <a href="#" class="" onclick="getView({'url':'{{ route('chats.index') }}','view':'ajax-view'})"><i class="mr-2 bi bi-chat pc"></i> Chats</a>
 

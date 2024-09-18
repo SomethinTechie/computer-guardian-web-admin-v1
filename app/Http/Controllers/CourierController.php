@@ -246,8 +246,9 @@ class CourierController extends Controller
         $result = $writer->write($qrCode);
 
         $dataUri = $result->getDataUri();
+        $repair->load('user');
 
-        return response()->view('qr-code', compact('dataUri'));
+        return response()->view('qr-code', compact('dataUri','repair'));
     }
 
     public function qrCodeRepair(Repair $repair)
