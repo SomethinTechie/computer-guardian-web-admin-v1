@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ResidentialAddress;
 use App\Models\User;
+use App\Models\Otp;
 use App\Http\Requests\UserStoreRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -61,6 +62,51 @@ class UserController extends Controller
 
 
         return response()->json('user created successfully');
+    }
+
+    public function getOtp(Request $request) {
+
+        $email = User::where('email', $request->email)->select('email')->first();
+
+        if (!$email) {
+            return response()->json(['error' => 'Email does not exist.']);
+        }
+        
+        $otp = rand(100000, 999999); 
+        
+        $storeOtp = Otp::create([
+            'email' => $request->email,
+            'otp' => $otp,
+        ]);
+        
+        return response()->json([
+            'success' => 'Otp successfully sent to your email',
+            'message' => 'THIS IS THE OTP',
+            'otp' => $storeOtp
+        ]);
+    }
+
+    public function validateOtp(Request $request) {
+        $otp = Otp::where('otp', $request->otp)->first();
+
+        if (!$otp) {
+            return response()->json(['error' => 'OTP not valid, please make sure it\'s correct']);
+        }
+
+        return response()->json(['otp' => $otp,'success' => 'Otp valid.']);
+    }
+
+    public function resetPassword(Request $request) {
+
+        if($request->password !== $request->confirmPassword) {
+            return response()->json(['message' => 'please make sure the passwords match']);
+        }
+
+        $user = User::where('email', $request->email)->first();
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return response()->json(['success' => 'Password reset successfully.']);
     }
 
 }

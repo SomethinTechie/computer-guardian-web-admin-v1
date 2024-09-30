@@ -36,6 +36,11 @@ Route::get('/parcels', [ParcelController::class, 'getParcel']);
 Route::post('/auth/register/user', [RegisterController::class, 'registerUser']);
 Route::post('/auth/login/user', [RegisterController::class, 'loginUser']);
 
+//forgot password
+Route::post('/users/password/otp', [UserController::class, 'getOtp']);
+Route::post('/users/password/otp/validate', [UserController::class, 'validateOtp']);
+Route::post('/users/password/reset', [UserController::class, 'resetPassword']);
+
 //Quotes
 Route::get('/quotes', [QuoteController::class, 'index']);
 Route::post('/quote/create', [QuoteController::class, 'store']);
