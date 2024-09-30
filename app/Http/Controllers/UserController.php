@@ -8,6 +8,8 @@ use App\Models\Otp;
 use App\Http\Requests\UserStoreRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\PasswordResetMail;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -88,10 +90,13 @@ class UserController extends Controller
 
     public function validateOtp(Request $request) {
         $otp = Otp::where('otp', $request->otp)->first();
+        $user = User::where('email', $otp->email)->first();
 
         if (!$otp) {
             return response()->json(['error' => 'OTP not valid, please make sure it\'s correct']);
         }
+
+        Mail::to($user->email)->send(new PasswordResetMail($otp,$user));
 
         return response()->json(['otp' => $otp,'success' => 'Otp valid.']);
     }
@@ -105,6 +110,12 @@ class UserController extends Controller
         $user = User::where('email', $request->email)->first();
         $user->password = Hash::make($request->password);
         $user->save();
+
+        $otp = Otp::where('email', $request->email);
+        if ($otp) {
+            $otp->delete();
+        }
+
 
         return response()->json(['success' => 'Password reset successfully.']);
     }

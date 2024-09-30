@@ -13,6 +13,17 @@ class PasswordResetMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    use Queueable, SerializesModels;
+
+    public $user;
+    public $otp;
+
+    public function __construct($user, $otp)
+    {
+        $this->user = $user;
+        $this->otp = $otp;
+    }
+
     /**
      * Create a new message instance.
      *
@@ -30,8 +41,12 @@ class PasswordResetMail extends Mailable
      */
     public function envelope()
     {
-        return new Envelope(
-            subject: 'Password Reset Mail',
+        return new Content(
+            view: 'emails.password_reset',
+            with: [
+                'user' => $this->user,
+                'otp' => $this->otp,
+            ]
         );
     }
 
@@ -43,7 +58,7 @@ class PasswordResetMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.password_reset',
         );
     }
 
