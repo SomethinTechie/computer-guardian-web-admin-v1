@@ -13,8 +13,6 @@ class PasswordResetMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    use Queueable, SerializesModels;
-
     public $user;
     public $otp;
 
@@ -25,28 +23,14 @@ class PasswordResetMail extends Mailable
     }
 
     /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
      * Get the message envelope.
      *
      * @return \Illuminate\Mail\Mailables\Envelope
      */
     public function envelope()
     {
-        return new Content(
-            view: 'emails.password_reset',
-            with: [
-                'user' => $this->user,
-                'otp' => $this->otp,
-            ]
+        return new Envelope(
+            subject: 'Password Reset Request'
         );
     }
 
@@ -59,6 +43,10 @@ class PasswordResetMail extends Mailable
     {
         return new Content(
             view: 'emails.password_reset',
+            with: [
+                'user' => $this->user,
+                'otp' => $this->otp,
+            ]
         );
     }
 
