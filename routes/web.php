@@ -180,4 +180,6 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
+Route::get('/test/email', [HomeController::class, 'testEmail']);
+
 Route::get('/qr-code/{repair}/repair', [CourierController::class, 'qrCodeRepair'])->name('qr.code.repair');

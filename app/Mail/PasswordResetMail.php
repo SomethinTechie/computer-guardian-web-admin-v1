@@ -5,20 +5,24 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class PasswordResetMail extends Mailable
+class PasswordResetMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $username;
     public $otp;
 
-    public function __construct($user, $otp)
+    /**
+     * Create a new message instance.
+     *
+     * @param $username
+     * @param $otp
+     */
+    public function __construct($username, $otp)
     {
-        $this->user = $user;
+        $this->username = $username;
         $this->otp = $otp;
     }
 
@@ -29,7 +33,7 @@ class PasswordResetMail extends Mailable
      */
     public function envelope()
     {
-        return new Envelope(
+        return new \Illuminate\Mail\Mailables\Envelope(
             subject: 'Password Reset Request'
         );
     }
@@ -41,10 +45,10 @@ class PasswordResetMail extends Mailable
      */
     public function content()
     {
-        return new Content(
+        return new \Illuminate\Mail\Mailables\Content(
             view: 'emails.password_reset',
             with: [
-                'user' => $this->user,
+                'username' => $this->username,
                 'otp' => $this->otp,
             ]
         );

@@ -68,9 +68,9 @@ class UserController extends Controller
 
     public function getOtp(Request $request) {
 
-        $email = User::where('email', $request->email)->select('email')->first();
+        $user = User::where('email', $request->email)->first();
 
-        if (!$email) {
+        if (!$user) {
             return response()->json(['error' => 'Email does not exist.']);
         }
         
@@ -80,6 +80,10 @@ class UserController extends Controller
             'email' => $request->email,
             'otp' => $otp,
         ]);
+
+        $username = $user->name;
+
+        Mail::to($user->email)->send(new PasswordResetMail($otp,$username));
         
         return response()->json([
             'success' => 'Otp successfully sent to your email',
@@ -90,13 +94,10 @@ class UserController extends Controller
 
     public function validateOtp(Request $request) {
         $otp = Otp::where('otp', $request->otp)->first();
-        $user = User::where('email', $otp->email)->first();
 
         if (!$otp) {
             return response()->json(['error' => 'OTP not valid, please make sure it\'s correct']);
         }
-
-        Mail::to($user->email)->send(new PasswordResetMail($otp,$user));
 
         return response()->json(['otp' => $otp,'success' => 'Otp valid.']);
     }
